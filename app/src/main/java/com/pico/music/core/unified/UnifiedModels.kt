@@ -71,6 +71,7 @@ data class UnifiedTrack(
     override val album: String,
     override val duration: Long,
     override val artworkUri: String? = null,
+    @get:JvmName("getTrackPlaybackUri")
     val playbackUri: String,
     val musicSource: MusicSource,
     val albumId: String? = null,
