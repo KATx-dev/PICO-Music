@@ -69,7 +69,7 @@ class BitChordAddonClient(
         }
     }
 
-    sealed class AddonException(message: String) : IOException(message)
+    open class AddonException(message: String) : IOException(message)
     class InsecureUrlException(url: String) :
         AddonException("Extension URL must use HTTPS (HTTP allowed only for localhost/LAN): $url")
 
