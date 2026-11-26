@@ -38,9 +38,19 @@ jobs:
         run: |
           mkdir -p config/signing
           mkdir -p .config
-          printf '%s' "$SIGNING_KEYSTORE" | base64 -di > ./config/signing/rhythm_keystore.jks
-          printf '%s' "$SIGNING_PROPERTIES" | base64 -di > ./.config/keystore.properties
-          printf '%s' "$PRIVATE_PROPERTIES" | base64 -di > ./config/signing/private.properties
+          # Only materialise files whose secret exists: an empty .config/keystore.properties
+          # makes the Gradle signing config load placeholder values and fail the build.
+          if [ -n "$SIGNING_KEYSTORE" ]; then
+            printf '%s' "$SIGNING_KEYSTORE" | base64 -di > ./config/signing/rhythm_keystore.jks
+          fi
+          if [ -n "$SIGNING_PROPERTIES" ]; then
+            printf '%s' "$SIGNING_PROPERTIES" | base64 -di > ./.config/keystore.properties
+          fi
+          if [ -n "$PRIVATE_PROPERTIES" ]; then
+            printf '%s' "$PRIVATE_PROPERTIES" | base64 -di > ./config/signing/private.properties
+          else
+            touch ./config/signing/private.properties
+          fi
 
       - name: Make Gradle executable
         run: chmod +x ./gradlew
@@ -53,14 +63,14 @@ jobs:
       - name: Generate checksums
         run: |
           cd app/build/outputs/apk/github/release
-          for file in Rhythm-*-githubRelease*.apk; do
+          for file in PICO-Music-*-githubRelease*.apk; do
             if [ -f "$file" ]; then
               sha256sum "$file" > "$file.sha256"
               md5sum "$file" > "$file.md5"
             fi
           done
           cd $GITHUB_WORKSPACE/app/build/outputs/apk/fdroid/release
-          for file in Rhythm-*-fdroidRelease*.apk; do
+          for file in PICO-Music-*-fdroidRelease*.apk; do
             if [ -f "$file" ]; then
               sha256sum "$file" > "$file.sha256"
               md5sum "$file" > "$file.md5"
@@ -87,12 +97,12 @@ jobs:
           prerelease: ${{ steps.prerelease.outputs.value }}
           body_path: release_notes.md
           files: |
-            app/build/outputs/apk/github/release/Rhythm-*-githubRelease*.apk
-            app/build/outputs/apk/github/release/Rhythm-*-githubRelease*.apk.sha256
-            app/build/outputs/apk/github/release/Rhythm-*-githubRelease*.apk.md5
-            app/build/outputs/apk/fdroid/release/Rhythm-*-fdroidRelease*.apk
-            app/build/outputs/apk/fdroid/release/Rhythm-*-fdroidRelease*.apk.sha256
-            app/build/outputs/apk/fdroid/release/Rhythm-*-fdroidRelease*.apk.md5
+            app/build/outputs/apk/github/release/PICO-Music-*-githubRelease*.apk
+            app/build/outputs/apk/github/release/PICO-Music-*-githubRelease*.apk.sha256
+            app/build/outputs/apk/github/release/PICO-Music-*-githubRelease*.apk.md5
+            app/build/outputs/apk/fdroid/release/PICO-Music-*-fdroidRelease*.apk
+            app/build/outputs/apk/fdroid/release/PICO-Music-*-fdroidRelease*.apk.sha256
+            app/build/outputs/apk/fdroid/release/PICO-Music-*-fdroidRelease*.apk.md5
 
       # ── Notifications ────────────────────────────────────────────────────────
 
@@ -100,7 +110,7 @@ jobs:
         if: success()
         id: find_apk
         run: |
-          APK_PATH=$(find app/build/outputs/apk/github/release -name "Rhythm-*-githubRelease.apk" ! -name "*-arm64-v8a.apk" ! -name "*-armeabi-v7a.apk" ! -name "*-x86_64.apk" ! -name "*-x86.apk" | head -n 1)
+          APK_PATH=$(find app/build/outputs/apk/github/release -name "PICO-Music-*-githubRelease.apk" ! -name "*-arm64-v8a.apk" ! -name "*-armeabi-v7a.apk" ! -name "*-x86_64.apk" ! -name "*-x86.apk" | head -n 1)
           if [ -z "$APK_PATH" ]; then
             echo "No APK found — skipping notifications."
             echo "path=" >> $GITHUB_OUTPUT

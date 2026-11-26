@@ -8,9 +8,10 @@ package com.pico.music.extensions
 import com.pico.music.core.unified.ManifestType
 import com.pico.music.core.unified.SearchFilter
 import com.pico.music.core.unified.StreamQuality
+import com.pico.music.core.unified.UnifiedStreamResolverRegistry
 import kotlinx.coroutines.runBlocking
-import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.MockWebServer
+import mockwebserver3.MockResponse
+import mockwebserver3.MockWebServer
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -32,13 +33,13 @@ class BitChordAddonClientTest {
 
     @After
     fun tearDown() {
-        server.shutdown()
+        server.close()
     }
 
     @Test
     fun `fetches manifest, searches tracks, and resolves unencrypted stream`() = runBlocking {
         server.enqueue(
-            MockResponse().setBody(
+            MockResponse.Builder().body(
                 """
                 {
                   "id": "selfhosted",
@@ -48,10 +49,10 @@ class BitChordAddonClientTest {
                   "allowDownloads": true
                 }
                 """.trimIndent()
-            )
+            ).build()
         )
         server.enqueue(
-            MockResponse().setBody(
+            MockResponse.Builder().body(
                 """
                 {
                   "tracks": [
@@ -66,11 +67,11 @@ class BitChordAddonClientTest {
                   ]
                 }
                 """.trimIndent()
-            )
+            ).build()
         )
         val streamUrl = server.url("/audio/t-42.flac").toString()
         server.enqueue(
-            MockResponse().setBody(
+            MockResponse.Builder().body(
                 """
                 {
                   "url": "$streamUrl",
@@ -82,7 +83,7 @@ class BitChordAddonClientTest {
                   "bitDepth": 24
                 }
                 """.trimIndent()
-            )
+            ).build()
         )
 
         val baseUrl = server.url("").toString().trimEnd('/')
@@ -93,7 +94,15 @@ class BitChordAddonClientTest {
         val ext = InstalledExtension(baseUrl = baseUrl, manifest = manifest)
         val searchResult = client.search(ext, "Teardrop", SearchFilter.SONGS)
         assertEquals(1, searchResult.tracks.size)
-        assertEquals("pico-ext://selfhosted/t-42", searchResult.tracks.first().playbackUri)
+
+        // Playback URIs are minted by the registry; android.net.Uri is a stub on the
+        // JVM test classpath, so assert against the same builder instead of a literal.
+        val firstTrack = searchResult.tracks.first()
+        assertEquals(
+            UnifiedStreamResolverRegistry.buildExtensionUri("selfhosted", "t-42"),
+            firstTrack.playbackUri
+        )
+        assertTrue(firstTrack.playbackUri.endsWith("/t-42"))
 
         val resolved = client.resolveStream(ext, "t-42", StreamQuality.HI_RES)
         assertEquals(streamUrl, resolved.url)
@@ -103,7 +112,7 @@ class BitChordAddonClientTest {
 
         // Verify honest User-Agent (never spoofs BitChord)
         val recorded = server.takeRequest()
-        assertTrue(recorded.getHeader("User-Agent")?.startsWith("PICO-Music/") == true)
+        assertTrue(recorded.headers["User-Agent"]?.startsWith("PICO-Music/") == true)
     }
 
     @Test
@@ -118,9 +127,7 @@ class BitChordAddonClientTest {
     fun `rejects encrypted streams`() = runBlocking {
         val streamUrl = server.url("/audio/drm.mp4").toString()
         server.enqueue(
-            MockResponse().setBody(
-                """{"url": "$streamUrl", "encrypted": true}"""
-            )
+            MockResponse.Builder().body("""{"url": "$streamUrl", "encrypted": true}""").build()
         )
         val baseUrl = server.url("").toString().trimEnd('/')
         val ext = InstalledExtension(
@@ -133,14 +140,16 @@ class BitChordAddonClientTest {
 
     @Test(expected = BitChordAddonClient.BitChordAuthRequiredException::class)
     fun `surfaces bitchordAuth 401 cleanly`() = runBlocking {
-        server.enqueue(MockResponse().setResponseCode(401))
+        server.enqueue(MockResponse.Builder().code(401).build())
         client.fetchManifest(server.url("").toString().trimEnd('/'))
         Unit
     }
 
     @Test(expected = BitChordAddonClient.RateLimitedException::class)
     fun `surfaces 429 rate limit cleanly`() = runBlocking {
-        server.enqueue(MockResponse().setResponseCode(429).addHeader("Retry-After", "30"))
+        server.enqueue(
+            MockResponse.Builder().code(429).addHeader("Retry-After", "30").build()
+        )
         val baseUrl = server.url("").toString().trimEnd('/')
         val ext = InstalledExtension(
             baseUrl = baseUrl,
