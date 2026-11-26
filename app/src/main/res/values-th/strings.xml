@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">บ้าน</string>
     <string name="library">ห้องสมุด</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">ส่วนควบคุมการเล่นสื่อ</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Rhythm เพลง - ควบคุมการเล่นด้วยเค้าโครงที่ตอบสนอง 9 แบบ, Material การออกแบบ 3 แบบ และการอัปเดตสถานะแบบเรียลไทม์</string>
-    <string name="widget_name_glance">Rhythm ดนตรี</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">ศิลปินที่ไม่รู้จัก</string>
     <string name="play_pause">เล่น/หยุดชั่วคราว</string>
     <!-- Widget Settings -->
@@ -293,7 +293,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">พิการ</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">การตั้งค่า</string>
     <string name="home_no_featured_albums">ไม่มีอัลบั้มเด่น</string>
     <string name="home_no_featured_albums_desc">เพิ่มอัลบั้มลงในห้องสมุดของคุณเพื่อดูเนื้อหาเด่น</string>
@@ -391,11 +391,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">ยกเลิก</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">บ้าน</string>
     <string name="common_library">ห้องสมุด</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">เพลงของคุณ Rhythm ของคุณ</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">พร้อมลุย!</string>
     <!-- Audio Quality -->
     
@@ -423,7 +423,7 @@
     <string name="updates_channel_desc">เลือกช่องทางการอัพเดตที่จะติดตาม:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">ยินดีต้อนรับสู่</string>
-    <string name="onboarding_welcome_subtitle">เพลงของคุณ Rhythm ของคุณ</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">เริ่มต้นเลย</string>
     <string name="onboarding_android13_notice">Android ประกาศเกี่ยวกับ 13+</string>
     <string name="onboarding_android13_desc">ในเวอร์ชัน Android ที่ใหม่กว่า คุณจะเห็นคำขอสิทธิ์หลายรายการ โปรดให้สิทธิ์การเข้าถึงไฟล์เสียงและการแจ้งเตือนเพื่อประสบการณ์ที่ดีที่สุด</string>

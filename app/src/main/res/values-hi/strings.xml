@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">घर</string>
     <string name="library">पुस्तकालय</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">मीडिया प्लेबैक नियंत्रण</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Rhythm संगीत - 9 प्रतिक्रियाशील लेआउट, Material 3 डिज़ाइन और वास्तविक समय स्थिति अपडेट के साथ प्लेबैक को नियंत्रित करें</string>
-    <string name="widget_name_glance">Rhythm संगीत</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">अज्ञात कलाकार</string>
     <string name="play_pause">चलाएं/रोकें</string>
     <!-- Widget Settings -->
@@ -302,7 +302,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">विकलांग</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">सेटिंग्स</string>
     <string name="home_no_featured_albums">कोई विशेष एल्बम नहीं</string>
     <string name="home_no_featured_albums_desc">चुनिंदा सामग्री देखने के लिए अपनी लाइब्रेरी में कुछ एल्बम जोड़ें</string>
@@ -402,11 +402,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">बर्खास्त करें</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">घर</string>
     <string name="common_library">पुस्तकालय</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">आपका संगीत, आपका Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">थिरकने के लिए तैयार!</string>
     <!-- Audio Quality -->
     
@@ -434,7 +434,7 @@
     <string name="updates_channel_desc">चुनें कि किस अपडेट चैनल का अनुसरण करना है:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">आपका स्वागत है</string>
-    <string name="onboarding_welcome_subtitle">आपका संगीत, आपका Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">आरंभ करें</string>
     <string name="onboarding_android13_notice">Android 13+ सूचना</string>
     <string name="onboarding_android13_desc">नए Android संस्करणों पर, आपको कई अनुमति अनुरोध दिखाई देंगे। सर्वोत्तम अनुभव के लिए कृपया ऑडियो फ़ाइलों और सूचनाओं तक पहुंच प्रदान करें।</string>

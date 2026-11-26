@@ -118,8 +118,9 @@ class AppUpdaterViewModel(
     private val updateDownloadCompletionAutoDismissMs = 7000L
 
     // GitHub repository information
-    private val githubOwner = "cromaguy"
-    private val githubRepo = "Rhythm"
+    // PICO Music is an independent community fork; never pull upstream cromaguy/Rhythm APKs as PICO updates.
+    private val githubOwner = ""
+    private val githubRepo = ""
 
     // Update check interval (6 hours)
     private val updateCheckInterval = TimeUnit.HOURS.toMillis(6)
@@ -383,6 +384,12 @@ class AppUpdaterViewModel(
             _isCheckingForUpdates.value = true
             _error.value = null
             _latestVersion.value = null // Clear any previous version data
+
+            if (githubOwner.isBlank() || githubRepo.isBlank()) {
+                _error.value = "In-app GitHub updates are not configured for this build of PICO Music."
+                _isCheckingForUpdates.value = false
+                return@launch
+            }
 
             try {
                 var candidate: AppVersion? = null
@@ -655,7 +662,7 @@ class AppUpdaterViewModel(
                 .replace(Regex("-nightly-r\\d+-[0-9a-f]+", RegexOption.IGNORE_CASE), "")
         val versionName = "$cleanedBaseName-nightly-r${run.run_number}-$shortSha"
 
-        val downloadUrl = "https://nightly.link/cromaguy/Rhythm/workflows/nightly.yml/main/Rhythm-Nightly-Artifacts.zip"
+        val downloadUrl = ""
 
         val commitMessage = run.head_commit?.message ?: "New features and performance updates"
         val changelogItems = ChangelogFilter.filterLines(commitMessage.lines())
@@ -667,7 +674,7 @@ class AppUpdaterViewModel(
             whatsNew = changelogItems,
             knownIssues = emptyList(),
             downloadUrl = downloadUrl,
-            apkAssetName = "Rhythm-Nightly-Artifacts.zip",
+            apkAssetName = "PICO-Music-Nightly-Artifacts.zip",
             apkSize = apkSize,
             releaseNotes = commitMessage,
             isPreRelease = true,
@@ -782,8 +789,8 @@ class AppUpdaterViewModel(
                             "Bug fixes and optimizations",
                         ),
                     knownIssues = emptyList(),
-                    downloadUrl = "https://github.com/cromaguy/Rhythm/releases",
-                    apkAssetName = "rhythm-release.apk",
+                    downloadUrl = "",
+                    apkAssetName = "pico-music-release.apk",
                     apkSize = 0,
                     releaseNotes = "Test update",
                     isPreRelease = false,

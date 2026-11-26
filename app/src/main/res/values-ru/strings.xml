@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">Главная</string>
     <string name="library">Библиотека</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">Управление воспроизведением на переднем плане, перемотка и обложка альбома</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Смотрите и управляйте воспроизведением с домашнего экрана.</string>
-    <string name="widget_name_glance">Rhythm Музыка</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Неизвестный исполнитель</string>
     <string name="play_pause">Воспроизведение/пауза</string>
     <!-- Widget Settings -->
@@ -320,7 +320,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">Отключено</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">Настройки</string>
     <string name="home_no_featured_albums">Нет избранных альбомов</string>
     <string name="home_no_featured_albums_desc">Добавьте несколько альбомов в свою библиотеку, чтобы увидеть избранный контент</string>
@@ -424,11 +424,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">Отклонить</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">Главная страница</string>
     <string name="common_library">Библиотека</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">Ваша музыка, ваш Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">Готовы к работе!</string>
     <!-- Audio Quality -->
     
@@ -456,7 +456,7 @@
     <string name="updates_channel_desc">Выберите, за каким каналом обновлений следить:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">Добро пожаловать в</string>
-    <string name="onboarding_welcome_subtitle">Ваша музыка, ваш Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">Начало работы</string>
     <string name="onboarding_android13_notice">Android 13+ Уведомление</string>
     <string name="onboarding_android13_desc">В более новых версиях Android вы увидите несколько запросов на разрешения. Для удобства предоставьте доступ к аудиофайлам и уведомлениям.</string>

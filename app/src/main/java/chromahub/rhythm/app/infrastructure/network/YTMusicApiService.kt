@@ -24,7 +24,7 @@ interface YTMusicApiService {
      */
     @POST("youtubei/v1/search")
     suspend fun search(
-        @Query("key") apiKey: String = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30",
+        @Query("key") apiKey: String? = null,
         @Body request: YTMusicSearchRequest
     ): Response<YTMusicSearchResponse>
     
@@ -33,7 +33,7 @@ interface YTMusicApiService {
      */
     @POST("youtubei/v1/browse")
     suspend fun getArtist(
-        @Query("key") apiKey: String = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30",
+        @Query("key") apiKey: String? = null,
         @Body request: YTMusicBrowseRequest
     ): Response<YTMusicArtistResponse>
     
@@ -42,7 +42,7 @@ interface YTMusicApiService {
      */
     @POST("youtubei/v1/browse")
     suspend fun getAlbum(
-        @Query("key") apiKey: String = "AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30",
+        @Query("key") apiKey: String? = null,
         @Body request: YTMusicBrowseRequest
     ): Response<YTMusicAlbumResponse>
 }

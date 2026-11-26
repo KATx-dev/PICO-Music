@@ -43,7 +43,7 @@
     <application
         android:name=".RhythmApplication"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
+        android:usesCleartextTraffic="false"
         android:networkSecurityConfig="@xml/network_security_config"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -115,7 +115,7 @@
         <receiver
             android:name=".infrastructure.widget.glance.RhythmLyricsWidgetReceiver"
             android:exported="true"
-            android:label="Rhythm Lyrics"
+            android:label="@string/widget_name_lyrics"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -125,11 +125,11 @@
                 android:resource="@xml/lyric_widget" />
         </receiver>
 
-        <!-- Rhythm Cookie Widget -->
+        <!-- PICO Cookie Widget -->
         <receiver
             android:name=".infrastructure.widget.glance.RhythmCookieWidgetReceiver"
             android:exported="true"
-            android:label="Rhythm Cookie"
+            android:label="@string/widget_name_cookie"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -139,11 +139,11 @@
                 android:resource="@xml/rhythm_cookie_widget_info" />
         </receiver>
 
-        <!-- Rhythm Stats Widget -->
+        <!-- PICO Stats Widget -->
         <receiver
             android:name=".infrastructure.widget.glance.RhythmStatsWidgetReceiver"
             android:exported="true"
-            android:label="Rhythm Stats"
+            android:label="@string/widget_name_stats"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

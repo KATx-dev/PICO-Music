@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">Zuhause</string>
     <string name="library">Bibliothek</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">Steuerelemente für die Medienwiedergabe, zum Springen und für Albumcover</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Rhythm Musik – Steuern Sie die Wiedergabe mit 9 responsiven Layouts, Material 3 Design und Statusaktualisierungen in Echtzeit</string>
-    <string name="widget_name_glance">Rhythm Musik</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Unbekannter Künstler</string>
     <string name="play_pause">Wiedergabe/Pause</string>
     <!-- Widget Settings -->
@@ -302,7 +302,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">Deaktiviert</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">Einstellungen</string>
     <string name="home_no_featured_albums">Keine vorgestellten Alben</string>
     <string name="home_no_featured_albums_desc">Fügen Sie Ihrer Bibliothek einige Alben hinzu, um ausgewählte Inhalte anzuzeigen</string>
@@ -402,11 +402,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">Abweisen</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">Zuhause</string>
     <string name="common_library">Bibliothek</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">Deine Musik, dein Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">Bereit zum Grooven!</string>
     <!-- Audio Quality -->
     
@@ -434,7 +434,7 @@
     <string name="updates_channel_desc">Wählen Sie den Update-Kanal aus, dem Sie folgen möchten:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">Willkommen bei</string>
-    <string name="onboarding_welcome_subtitle">Deine Musik, dein Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">Beginnen Sie</string>
     <string name="onboarding_android13_notice">Android 13+ Hinweis</string>
     <string name="onboarding_android13_desc">In neueren Android-Versionen werden mehrere Berechtigungsanfragen angezeigt. Für ein optimales Erlebnis gewähren Sie bitte Zugriff auf Audiodateien und Benachrichtigungen.</string>

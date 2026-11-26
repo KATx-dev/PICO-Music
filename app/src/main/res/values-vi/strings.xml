@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">Trang chủ</string>
     <string name="library">Thư viện</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">Điều khiển phát lại phương tiện</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Âm nhạc Rhythm - Điều khiển phát lại với 9 bố cục phản hồi, thiết kế Material 3 và cập nhật trạng thái theo thời gian thực</string>
-    <string name="widget_name_glance">Rhythm Âm nhạc</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Nghệ sĩ vô danh</string>
     <string name="play_pause">Phát/Tạm dừng</string>
     <!-- Widget Settings -->
@@ -293,7 +293,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">Bị vô hiệu hóa</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">Cài đặt</string>
     <string name="home_no_featured_albums">Không có album nổi bật</string>
     <string name="home_no_featured_albums_desc">Thêm một số album vào thư viện của bạn để xem nội dung nổi bật</string>
@@ -391,11 +391,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">Loại bỏ</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">Trang chủ</string>
     <string name="common_library">Thư viện</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">Âm nhạc của bạn, Rhythm của bạn</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">Sẵn sàng lao vào!</string>
     <!-- Audio Quality -->
     
@@ -423,7 +423,7 @@
     <string name="updates_channel_desc">Chọn kênh cập nhật để theo dõi:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">Chào mừng đến với</string>
-    <string name="onboarding_welcome_subtitle">Âm nhạc của bạn, Rhythm của bạn</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">Bắt đầu</string>
     <string name="onboarding_android13_notice">Android 13+ Thông báo</string>
     <string name="onboarding_android13_desc">Trên các phiên bản Android mới hơn, bạn sẽ thấy nhiều yêu cầu cấp quyền. Vui lòng cấp quyền truy cập vào tệp âm thanh và thông báo để có trải nghiệm tốt nhất.</string>

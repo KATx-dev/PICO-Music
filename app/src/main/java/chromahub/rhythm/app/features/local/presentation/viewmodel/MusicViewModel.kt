@@ -382,13 +382,13 @@ class MusicViewModel(application: Application) : AndroidViewModel(application) {
     private val favoriteChangeReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             when (intent?.action) {
-                "chromahub.rhythm.app.action.FAVORITE_CHANGED" -> {
+                "com.pico.music.action.FAVORITE_CHANGED" -> {
                     Log.d(TAG, "Received favorite change notification from service")
                     // Refresh favorite songs and playlists from settings
                     refreshFavoriteSongs()
                     loadSavedPlaylists()
                 }
-                "chromahub.rhythm.app.action.WIDGET_TOGGLE_FAVORITE" -> {
+                "com.pico.music.action.WIDGET_TOGGLE_FAVORITE" -> {
                     Log.d(TAG, "Received favorite toggle from widget")
                     // Toggle favorite for current song
                     _currentSong.value?.let { song ->
@@ -1433,8 +1433,8 @@ class MusicViewModel(application: Application) : AndroidViewModel(application) {
         
         // Register broadcast receiver for favorite changes from service and widget
         val filter = IntentFilter().apply {
-            addAction("chromahub.rhythm.app.action.FAVORITE_CHANGED")
-            addAction("chromahub.rhythm.app.action.WIDGET_TOGGLE_FAVORITE")
+            addAction("com.pico.music.action.FAVORITE_CHANGED")
+            addAction("com.pico.music.action.WIDGET_TOGGLE_FAVORITE")
             addAction(MediaPlaybackService.ACTION_SHUFFLE_STATE_CHANGED)
             addAction(MediaPlaybackService.BROADCAST_SLEEP_TIMER_STATUS)
         }
@@ -6910,7 +6910,7 @@ class MusicViewModel(application: Application) : AndroidViewModel(application) {
     
     private fun notifyMediaServiceFavoriteChange() {
         // Send broadcast to notify MediaPlaybackService about favorite state change
-        val intent = Intent("chromahub.rhythm.app.action.FAVORITE_CHANGED").apply {
+        val intent = Intent("com.pico.music.action.FAVORITE_CHANGED").apply {
             setPackage(getApplication<Application>().packageName)
         }
         getApplication<Application>().sendBroadcast(intent)

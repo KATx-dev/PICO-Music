@@ -50,14 +50,29 @@ class PreloadController(
                 DefaultDataSource.Factory(context, DefaultHttpDataSource.Factory()),
                 object : ResolvingDataSource.Resolver {
                     override fun resolveDataSpec(dataSpec: DataSpec): DataSpec {
-                        if (dataSpec.uri.scheme == "streaming") {
-                            val trackId = dataSpec.uri.lastPathSegment
-                            if (!trackId.isNullOrBlank()) {
-                                val repository = StreamingMusicModule.provideStreamingMusicRepository(context)
-                                val freshUrl = runBlocking { repository.getStreamingUrl(trackId) }
-                                if (!freshUrl.isNullOrBlank()) {
-                                    return dataSpec.withUri((freshUrl).toUri())
+                        val uri = dataSpec.uri
+                        if (com.pico.music.core.unified.UnifiedStreamResolverRegistry.isManagedScheme(uri.scheme)) {
+                            val resolved = runBlocking {
+                                if (uri.scheme == com.pico.music.core.unified.UnifiedStreamResolverRegistry.SCHEME_STREAMING) {
+                                    val trackId = uri.lastPathSegment
+                                    if (!trackId.isNullOrBlank()) {
+                                        val repository = StreamingMusicModule.provideStreamingMusicRepository(context)
+                                        val freshUrl = repository.getStreamingUrl(trackId)
+                                        if (!freshUrl.isNullOrBlank()) {
+                                            com.pico.music.core.unified.ResolvedStream(url = freshUrl)
+                                        } else null
+                                    } else null
+                                } else {
+                                    com.pico.music.core.unified.UnifiedStreamResolverRegistry.resolve(uri)
                                 }
+                            }
+                            if (resolved != null && resolved.url.isNotBlank()) {
+                                val builder = dataSpec.buildUpon()
+                                    .setUri(resolved.url.toUri())
+                                if (resolved.headers.isNotEmpty()) {
+                                    builder.setHttpRequestHeaders(resolved.headers)
+                                }
+                                return builder.build()
                             }
                         }
                         return dataSpec

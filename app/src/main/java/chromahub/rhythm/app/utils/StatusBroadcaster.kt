@@ -1,6 +1,9 @@
 /*
  * SPDX-FileCopyrightText: 2024-2026 Anjishnu Nandi <https://github.com/cromaguy>
+ * SPDX-FileCopyrightText: 2026 PICO Music Contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * Modified for PICO Music (application ID package alignment).
  */
 
 package chromahub.rhythm.app.utils
@@ -8,6 +11,7 @@ package chromahub.rhythm.app.utils
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import chromahub.rhythm.app.BuildConfig
 import chromahub.rhythm.app.shared.data.model.Song
 
 /**
@@ -53,7 +57,7 @@ class StatusBroadcaster(private val context: Context) {
 
         private const val DEFAULT_BLUETOOTH_LYRIC_LINE = "No lyrics"
         
-        private const val PACKAGE_NAME = "chromahub.rhythm.app"
+        private const val PACKAGE_NAME = BuildConfig.APPLICATION_ID
     }
     
     /**

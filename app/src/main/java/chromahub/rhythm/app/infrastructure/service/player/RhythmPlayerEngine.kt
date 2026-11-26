@@ -563,7 +563,7 @@ class RhythmPlayerEngine(
             .readTimeout(30, TimeUnit.SECONDS)
             .build()
         val httpDataSourceFactory = OkHttpDataSource.Factory(okHttpClient)
-            .setUserAgent("Rhythm/${chromahub.rhythm.app.BuildConfig.VERSION_NAME} (Android)")
+            .setUserAgent("PICO-Music/${chromahub.rhythm.app.BuildConfig.VERSION_NAME} (Android)")
         val cacheDataSourceFactory = CacheDataSource.Factory()
             .setCache(AudioCacheManager.getCache(context))
             .setUpstreamDataSourceFactory(httpDataSourceFactory)
@@ -575,18 +575,30 @@ class RhythmPlayerEngine(
             baseDataSourceFactory,
             object : ResolvingDataSource.Resolver {
                 override fun resolveDataSpec(dataSpec: DataSpec): DataSpec {
-                    if (dataSpec.uri.scheme == "streaming") {
-                        val trackId = dataSpec.uri.lastPathSegment
-                        if (!trackId.isNullOrBlank()) {
-                            val repository = StreamingMusicModule.provideStreamingMusicRepository(context)
-                            // Run blocking is safe here as ExoPlayer calls resolveDataSpec on a background thread
-                            val freshUrl = runBlocking { repository.getStreamingUrl(trackId) }
-                            if (!freshUrl.isNullOrBlank()) {
-                                return dataSpec.buildUpon()
-                                    .setUri((freshUrl).toUri())
-                                    .setKey("streaming_$trackId")
-                                    .build()
+                    val uri = dataSpec.uri
+                    if (com.pico.music.core.unified.UnifiedStreamResolverRegistry.isManagedScheme(uri.scheme)) {
+                        val resolved = runBlocking {
+                            if (uri.scheme == com.pico.music.core.unified.UnifiedStreamResolverRegistry.SCHEME_STREAMING) {
+                                val trackId = uri.lastPathSegment
+                                if (!trackId.isNullOrBlank()) {
+                                    val repository = StreamingMusicModule.provideStreamingMusicRepository(context)
+                                    val freshUrl = repository.getStreamingUrl(trackId)
+                                    if (!freshUrl.isNullOrBlank()) {
+                                        com.pico.music.core.unified.ResolvedStream(url = freshUrl)
+                                    } else null
+                                } else null
+                            } else {
+                                com.pico.music.core.unified.UnifiedStreamResolverRegistry.resolve(uri)
                             }
+                        }
+                        if (resolved != null && resolved.url.isNotBlank()) {
+                            val builder = dataSpec.buildUpon()
+                                .setUri(resolved.url.toUri())
+                                .setKey("pico_${uri.scheme}_${uri.lastPathSegment ?: uri.hashCode()}")
+                            if (resolved.headers.isNotEmpty()) {
+                                builder.setHttpRequestHeaders(resolved.headers)
+                            }
+                            return builder.build()
                         }
                     }
                     return dataSpec

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">Rumah</string>
     <string name="library">Perpustakaan</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">Kontrol pemutaran latar depan, tindakan pencarian posisi, dan sampul album</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Lihat yang sedang diputar dan kendalikan musik dari layar utama — putar, jeda, lewati, dan lainnya.</string>
-    <string name="widget_name_glance">Rhythm Musik</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Artis tidak dikenal</string>
     <string name="play_pause">Putar/Jeda</string>
     <!-- Widget Settings -->
@@ -293,7 +293,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">Dinonaktifkan</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">Pengaturan</string>
     <string name="home_no_featured_albums">Tidak Ada Album Unggulan</string>
     <string name="home_no_featured_albums_desc">Tambahkan beberapa album ke perpustakaan Anda untuk melihat konten unggulan</string>
@@ -391,11 +391,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">Singkirkan</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">Rumah</string>
     <string name="common_library">Perpustakaan</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">Musik Anda, Rhythm Anda</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">Siap beraksi!</string>
     <!-- Audio Quality -->
     
@@ -423,7 +423,7 @@
     <string name="updates_channel_desc">Pilih saluran pembaruan mana yang akan diikuti:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">Selamat datang di</string>
-    <string name="onboarding_welcome_subtitle">Musik Anda, Rhythm Anda</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">Memulai</string>
     <string name="onboarding_android13_notice">Android 13+ Pemberitahuan</string>
     <string name="onboarding_android13_desc">Pada versi Android yang lebih baru, Anda akan melihat beberapa permintaan izin. Harap berikan akses ke file audio dan notifikasi untuk pengalaman terbaik.</string>

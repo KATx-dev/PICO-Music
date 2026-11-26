@@ -17,9 +17,9 @@ class RepeatModeSyncTest {
 
     // Action strings defined in MediaPlaybackService
     companion object {
-        private const val REPEAT_MODE_OFF = "chromahub.rhythm.app.action.REPEAT_MODE_OFF"
-        private const val REPEAT_MODE_ONE = "chromahub.rhythm.app.action.REPEAT_MODE_ONE"
-        private const val REPEAT_MODE_ALL = "chromahub.rhythm.app.action.REPEAT_MODE_ALL"
+        private const val REPEAT_MODE_OFF = "com.pico.music.action.REPEAT_MODE_OFF"
+        private const val REPEAT_MODE_ONE = "com.pico.music.action.REPEAT_MODE_ONE"
+        private const val REPEAT_MODE_ALL = "com.pico.music.action.REPEAT_MODE_ALL"
     }
 
     private fun getNextRepeatMode(currentMode: Int): Int {

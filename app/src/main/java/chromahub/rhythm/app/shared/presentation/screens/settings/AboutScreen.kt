@@ -349,8 +349,8 @@ fun AboutScreen(
                         shape = RoundedCornerShape(topStart = 6.dp, topEnd = 6.dp, bottomStart = 20.dp, bottomEnd = 20.dp),
                         onClick = {
                             val allInfo = buildString {
-                                appendLine("=== Rhythm System Information ===")
-                                appendLine("App: Rhythm")
+                                appendLine("=== PICO Music System Information ===")
+                                appendLine("App: PICO Music (${BuildConfig.APPLICATION_ID})")
                                 appendLine("Version: ${BuildConfig.VERSION_NAME}")
                                 appendLine("Build: ${BuildConfig.VERSION_CODE} ($buildVariant)")
                                 appendLine("Target SDK: ${appInfo.targetSdkVersion}")
@@ -378,12 +378,12 @@ fun AboutScreen(
                 )
 
                 DeveloperCard(
-                    name = "Anjishnu Nandi",
-                    githubUsername = "cromaguy",
-                    avatarUrl = "https://github.com/cromaguy.png",
-                    supportUrl = "https://ko-fi.com/anjishnunandi",
-                    teamTitle = context.getString(R.string.settings_about_team_chromahub),
-                    teamDescription = context.getString(R.string.settings_about_team_desc),
+                    name = "PICO Music",
+                    githubUsername = "KATx-dev/PICO-Music",
+                    avatarUrl = "https://github.com/KATx-dev.png",
+                    supportUrl = "https://www.gnu.org/licenses/gpl-3.0.html",
+                    teamTitle = "Your Music. Everywhere.",
+                    teamDescription = "PICO Music is an independent open-source music player forked from Rhythm by Anjishnu Nandi (cromaguy), licensed under GPL-3.0-or-later.",
                     openUrl = openUrl
                 )
             }
@@ -491,28 +491,37 @@ fun AboutScreen(
 
 
             item {
+                val communityCreditsItems = remember(context, haptics) {
+                    com.pico.music.credits.CommunityCredits.entries.map { credit ->
+                        toMaterial3SettingsItem(
+                            context = context,
+                            hapticFeedback = haptics,
+                            item = SettingItem(
+                                icon = RhythmIcons.Code,
+                                title = credit.name,
+                                description = "${credit.relationship} (${credit.license}) — ${credit.contribution}",
+                                onClick = { openUrl(credit.url) }
+                            )
+                        )
+                    }
+                }
+                Material3SettingsGroup(
+                    title = "With Thanks to the Music Community",
+                    items = communityCreditsItems,
+                    containerColor = MaterialTheme.colorScheme.surfaceContainer
+                )
+            }
+
+            item {
                 val actionItems = listOf(
                     toMaterial3SettingsItem(
                         context = context,
                         hapticFeedback = haptics,
                         item = SettingItem(
-                            icon = RhythmIcons.Download,
-                            title = context.getString(R.string.settings_about_check_updates),
-                            description = context.getString(R.string.updates_check_again),
-                            onClick = {
-                                appUpdaterViewModel.checkForUpdates(force = true)
-                                onNavigateToUpdates?.invoke()
-                            }
-                        )
-                    ),
-                    toMaterial3SettingsItem(
-                        context = context,
-                        hapticFeedback = haptics,
-                        item = SettingItem(
-                            icon = RhythmIcons.BugReport,
-                            title = context.getString(R.string.settings_about_report_bug),
-                            description = "github.com/cromaguy/Rhythm/issues",
-                            onClick = { openUrl("https://github.com/cromaguy/Rhythm/issues") }
+                            icon = RhythmIcons.Info,
+                            title = "Licence",
+                            description = "GNU General Public License v3.0 or later (GPL-3.0-or-later)",
+                            onClick = { openUrl("https://www.gnu.org/licenses/gpl-3.0.html") }
                         )
                     ),
                     toMaterial3SettingsItem(
@@ -529,28 +538,8 @@ fun AboutScreen(
                         context = context,
                         hapticFeedback = haptics,
                         item = SettingItem(
-                            icon = MaterialSymbolIcon("chat", filled = true),
-                            title = stringResource(R.string.aboutscreen_discord_community),
-                            description = "discord.gg/XjPyUYPQYc",
-                            onClick = { openUrl("https://discord.gg/XjPyUYPQYc") }
-                        )
-                    ),
-                    toMaterial3SettingsItem(
-                        context = context,
-                        hapticFeedback = haptics,
-                        item = SettingItem(
-                            icon = MaterialSymbolIcon("send", filled = true),
-                            title = stringResource(R.string.cd_telegram_support),
-                            description = "t.me/RhythmSupport",
-                            onClick = { openUrl("https://t.me/RhythmSupport") }
-                        )
-                    ),
-                    toMaterial3SettingsItem(
-                        context = context,
-                        hapticFeedback = haptics,
-                        item = SettingItem(
                             icon = MaterialSymbolIcon("restart_alt", filled = true),
-                            title = stringResource(R.string.about_replay_tour),
+                            title = context.getString(R.string.about_replay_tour),
                             description = stringResource(R.string.about_replay_tour_desc),
                             onClick = {
                                 appSettings.setOnboardingCompleted(false)
@@ -640,7 +629,7 @@ fun DeveloperCard(
                     ExpressiveGroupButton(
                         onClick = {
                             HapticUtils.performHapticFeedback(context, haptics, HapticType.LIGHT)
-                            openUrl("https://rhythmweb.vercel.app/")
+                            openUrl("https://github.com/$githubUsername")
                         },
                         isStart = true,
                         modifier = Modifier.weight(1f)

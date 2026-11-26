@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">বাড়ি</string>
     <string name="library">লাইব্রেরি</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">মিডিয়া প্লেব্যাক নিয়ন্ত্রণ</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Rhythm সঙ্গীত - 9টি প্রতিক্রিয়াশীল লেআউট, Material 3 ডিজাইন এবং রিয়েল-টাইম স্টেট আপডেট সহ প্লেব্যাক নিয়ন্ত্রণ করুন</string>
-    <string name="widget_name_glance">Rhythm সঙ্গীত</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">অজানা শিল্পী</string>
     <string name="play_pause">প্লে/পজ করুন</string>
     <!-- Widget Settings -->
@@ -302,7 +302,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">অক্ষম</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">সেটিংস</string>
     <string name="home_no_featured_albums">কোনো বৈশিষ্ট্যযুক্ত অ্যালবাম নেই</string>
     <string name="home_no_featured_albums_desc">বৈশিষ্ট্যযুক্ত বিষয়বস্তু দেখতে আপনার লাইব্রেরিতে কিছু অ্যালবাম যোগ করুন</string>
@@ -402,11 +402,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">খারিজ</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">বাড়ি</string>
     <string name="common_library">লাইব্রেরি</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">আপনার সঙ্গীত, আপনার Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">খাঁজ কাটার জন্য প্রস্তুত!</string>
     <!-- Audio Quality -->
     
@@ -434,7 +434,7 @@
     <string name="updates_channel_desc">কোন আপডেট চ্যানেল অনুসরণ করতে হবে তা বেছে নিন:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">স্বাগতম</string>
-    <string name="onboarding_welcome_subtitle">আপনার সঙ্গীত, আপনার Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">শুরু করুন</string>
     <string name="onboarding_android13_notice">Android ১৩+ বিজ্ঞপ্তি</string>
     <string name="onboarding_android13_desc">নতুন Android সংস্করণে, আপনি একাধিক অনুমতির অনুরোধ দেখতে পাবেন। সর্বোত্তম অভিজ্ঞতার জন্য অনুগ্রহ করে অডিও ফাইল এবং বিজ্ঞপ্তিগুলিতে অ্যাক্সেস মঞ্জুর করুন৷</string>

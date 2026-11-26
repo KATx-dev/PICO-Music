@@ -147,7 +147,7 @@ class MediaPlaybackService : MediaLibraryService(), Player.Listener {
     private val favoriteChangeReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             when (intent?.action) {
-                "chromahub.rhythm.app.action.FAVORITE_CHANGED" -> {
+                "com.pico.music.action.FAVORITE_CHANGED" -> {
                     Log.d(TAG, "Received favorite change notification from ViewModel")
                     // Update notification custom layout
                     scheduleCustomLayoutUpdate(250) // Longer delay for external changes
@@ -655,7 +655,7 @@ class MediaPlaybackService : MediaLibraryService(), Player.Listener {
         androidx.core.content.ContextCompat.registerReceiver(
             this,
             favoriteChangeReceiver,
-            IntentFilter("chromahub.rhythm.app.action.FAVORITE_CHANGED"),
+            IntentFilter("com.pico.music.action.FAVORITE_CHANGED"),
             androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
         )
 
@@ -1420,8 +1420,11 @@ notificationManager.createNotificationChannel(sleepTimerChannel)
         return actualState
     }
     
+    private val streamRecoveryAttempted = java.util.concurrent.ConcurrentHashMap.newKeySet<String>()
+
     private fun handlePlaybackError(error: PlaybackException) {
         if (skipMissingLocalItem(error)) return
+        if (tryRecoverExpiredStream(error)) return
 
         val message = when (error.errorCode) {
             PlaybackException.ERROR_CODE_DECODER_INIT_FAILED ->
@@ -1445,6 +1448,46 @@ notificationManager.createNotificationChannel(sleepTimerChannel)
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to pause player on error", e)
             }
+        }
+    }
+
+    /**
+     * Evicts an expired ephemeral stream URL and retries playback once at the current position
+     * when a remote stream fails with an expiration/HTTP error.
+     */
+    private fun tryRecoverExpiredStream(error: PlaybackException): Boolean {
+        val currentPlayer = player
+        val index = resolveErrorItemIndex(currentPlayer, error)
+        if (index == C.INDEX_UNSET || index !in 0 until currentPlayer.mediaItemCount) return false
+
+        val item = currentPlayer.getMediaItemAt(index)
+        val uri = item.localConfiguration?.uri ?: return false
+        if (!com.pico.music.core.unified.StreamErrorClassifier.isRecoverableStreamExpiration(
+                errorCode = error.errorCode,
+                cause = error.cause,
+                uriScheme = uri.scheme
+            )
+        ) {
+            return false
+        }
+
+        val retryKey = "${item.mediaId}|$uri"
+        if (!streamRecoveryAttempted.add(retryKey)) {
+            streamRecoveryAttempted.remove(retryKey)
+            return false
+        }
+
+        Log.w(TAG, "Refreshing expired ephemeral stream for ${item.mediaId} ($uri)")
+        com.pico.music.core.unified.UnifiedStreamResolverRegistry.invalidate(uri)
+        return try {
+            val resumePosition = currentPlayer.currentPosition.coerceAtLeast(0L)
+            currentPlayer.seekTo(index, resumePosition)
+            currentPlayer.prepare()
+            currentPlayer.playWhenReady = true
+            true
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to recover expired stream for ${item.mediaId}", e)
+            false
         }
     }
 
@@ -1674,7 +1717,7 @@ notificationManager.createNotificationChannel(sleepTimerChannel)
                 }
                 updateFavoritesPlaylist(songId = songId, song = song, isAdding = isAdding)
 
-                val notifyIntent = Intent("chromahub.rhythm.app.action.FAVORITE_CHANGED").apply {
+                val notifyIntent = Intent("com.pico.music.action.FAVORITE_CHANGED").apply {
                     setPackage(packageName)
                 }
                 sendBroadcast(notifyIntent)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">首页</string>
     <string name="library">曲库</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">前台播放控制、搜索操作和专辑封面</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">在主页上查看正在播放的音乐并控制音乐——播放、暂停、跳过等。</string>
-    <string name="widget_name_glance">Rhythm 音乐</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">未知艺术家</string>
     <string name="play_pause">播放/暂停</string>
     <!-- Widget Settings -->
@@ -293,7 +293,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">已禁用</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">设置</string>
     <string name="home_no_featured_albums">没有精选专辑</string>
     <string name="home_no_featured_albums_desc">将一些专辑添加到您的媒体库中以查看精选内容</string>
@@ -391,11 +391,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">取消</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">首页</string>
     <string name="common_library">音乐库</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">你的音乐，你的Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">准备好啦！</string>
     <!-- Audio Quality -->
     
@@ -423,7 +423,7 @@
     <string name="updates_channel_desc">选择要遵循的更新渠道：</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">欢迎来到</string>
-    <string name="onboarding_welcome_subtitle">你的音乐，你的Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">开始使用</string>
     <string name="onboarding_android13_notice">Android 13+ 通知</string>
     <string name="onboarding_android13_desc">在较新的 Android 版本上，您将看到多个权限请求。请授予对音频文件和通知的访问权限，以获得最佳体验。</string>

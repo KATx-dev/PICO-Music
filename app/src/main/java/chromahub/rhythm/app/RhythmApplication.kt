@@ -135,8 +135,8 @@ class RhythmApplication : Application(), ImageLoaderFactory {
      * cache at 25% of heap, which is far too large for an offline music app — bound both explicitly.
      */
     override fun newImageLoader(): ImageLoader {
-        val imageOkHttpClient = chromahub.rhythm.app.features.streaming.data.provider.UserTrustManager
-            .buildUserTrustingHttpClientBuilder()
+        // Use standard strict TLS verification for image fetches (never weaken public HTTPS verification).
+        val imageOkHttpClient = okhttp3.OkHttpClient.Builder()
             .dispatcher(Dispatcher().apply {
                 maxRequests = 16
                 maxRequestsPerHost = 4

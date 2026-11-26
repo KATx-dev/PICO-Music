@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <string name="home">Αρχική Σελίδα</string>
     <string name="library">Βιβλιοθήκη</string>
     <string name="search">Αναζήτηση</string>
     <string name="media3_notification_channel_name">Το Rythm Παίζει Τώρα</string>
     <string name="media3_notification_channel_description">Στοιχεία ελέγχου αναπαραγωγής στο προσκήνιο, ενέργειες αναζήτησης και εξώφυλλο άλμπουμ</string>
     <string name="widget_description_glance">Δείτε τι παίζει και ελέγξτε την μουσική σας από την αρχική σας οθώνη -- αναπαραγωγή, παύση, παράλειψη και παραπάνω.</string>
-    <string name="widget_name_glance">Μουσική Rhythm</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Άγνωστος Καλλιτέχνης</string>
     <string name="play_pause">Αναπαραγωγή/Παύση</string>
     <string name="settings_widget">Widget</string>

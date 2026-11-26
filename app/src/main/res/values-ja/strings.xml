@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">ホーム</string>
     <string name="library">ライブラリ</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">メディア再生コントロール</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Rhythm 音楽プレーヤー、Material 3 デザインやリアルタイムの状態更新による再生の制御</string>
-    <string name="widget_name_glance">Rhythm 音楽</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">不明なアーティスト</string>
     <string name="play_pause">再生/一時停止</string>
     <!-- Widget Settings -->
@@ -293,7 +293,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">無効</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">設定</string>
     <string name="home_no_featured_albums">注目のアルバムはありません</string>
     <string name="home_no_featured_albums_desc">ライブラリにアルバムを追加して、注目のコンテンツを表示します</string>
@@ -391,11 +391,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">却下</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">ホーム</string>
     <string name="common_library">ライブラリ</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">あなたの音楽、あなたの Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">準備完了!</string>
     <!-- Audio Quality -->
     
@@ -423,7 +423,7 @@
     <string name="updates_channel_desc">フォローする更新チャネルを選択します:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">ようこそ</string>
-    <string name="onboarding_welcome_subtitle">あなたの音楽、あなたの Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">始めましょう</string>
     <string name="onboarding_android13_notice">Android 13以降の通知</string>
     <string name="onboarding_android13_desc">新しい Android バージョンでは、複数の権限リクエストが表示されます。最高のエクスペリエンスを得るために、オーディオ ファイルと通知へのアクセスを許可してください。</string>

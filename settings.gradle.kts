@@ -26,6 +26,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Rhythm"
+rootProject.name = "PICO Music"
 include(":app")
 include(":macrobenchmark")

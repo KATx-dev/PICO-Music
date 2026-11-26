@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">வீடு</string>
     <string name="library">நூலகம்</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">மீடியா பிளேபேக் கட்டுப்பாடுகள்</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Rhythm மியூசிக் - 9 ரெஸ்பான்சிவ் லேஅவுட்கள், Material 3 டிசைன் மற்றும் நிகழ்நேர நிலை புதுப்பிப்புகளுடன் பிளேபேக்கைக் கட்டுப்படுத்தவும்</string>
-    <string name="widget_name_glance">Rhythm இசை</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">அறியப்படாத கலைஞர்</string>
     <string name="play_pause">விளையாடு/இடைநிறுத்தம்</string>
     <!-- Widget Settings -->
@@ -302,7 +302,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">ஊனமுற்றவர்</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">அமைப்புகள்</string>
     <string name="home_no_featured_albums">சிறப்பு ஆல்பங்கள் இல்லை</string>
     <string name="home_no_featured_albums_desc">பிரத்யேக உள்ளடக்கத்தைப் பார்க்க உங்கள் நூலகத்தில் சில ஆல்பங்களைச் சேர்க்கவும்</string>
@@ -402,11 +402,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">நிராகரிக்கவும்</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">வீடு</string>
     <string name="common_library">நூலகம்</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">உங்கள் இசை, உங்கள் Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">பள்ளம் தயார்!</string>
     <!-- Audio Quality -->
     
@@ -434,7 +434,7 @@
     <string name="updates_channel_desc">எந்த புதுப்பிப்பு சேனலைப் பின்பற்ற வேண்டும் என்பதைத் தேர்வுசெய்யவும்:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">வரவேற்கிறோம்</string>
-    <string name="onboarding_welcome_subtitle">உங்கள் இசை, உங்கள் Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">தொடங்குங்கள்</string>
     <string name="onboarding_android13_notice">Android 13+ அறிவிப்பு</string>
     <string name="onboarding_android13_desc">புதிய Android பதிப்புகளில், நீங்கள் பல அனுமதி கோரிக்கைகளைக் காண்பீர்கள். சிறந்த அனுபவத்திற்காக ஆடியோ கோப்புகள் மற்றும் அறிவிப்புகளுக்கான அணுகலை வழங்கவும்.</string>

@@ -1,14 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-   Sample backup rules file; uncomment and customize as necessary.
-   See https://developer.android.com/guide/topics/data/autobackup
-   for details.
-   Note: This file is ignored for devices older than API 31
-   See https://developer.android.com/about/versions/12/backup-restore
--->
-<full-backup-content xmlns:tools="http://schemas.android.com/tools">
-    <!-- Include our app's shared preferences -->
-    <include domain="sharedpref" path="rhythm_preferences.xml"/>
-    
-    <!-- Exclude Room database to avoid stale cached library data surviving reinstalls -->
-    <exclude domain="database" path="rhythm_database*" tools:ignore="FullBackupContent"/>
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude internal database files -->
+    <exclude domain="database" path="rhythm_database" />
+    <exclude domain="database" path="rhythm_database-shm" />
+    <exclude domain="database" path="rhythm_database-wal" />
+    <exclude domain="database" path="pico_music_database" />
+    <exclude domain="database" path="pico_music_database-shm" />
+    <exclude domain="database" path="pico_music_database-wal" />
+
+    <!-- Exclude caches -->
+    <exclude domain="root" path="cache" />
+    <exclude domain="root" path="code_cache" />
+
+    <!-- Exclude sensitive credentials, session tokens, extension configs, and updater state -->
+    <exclude domain="sharedpref" path="streaming_service_sessions.xml" />
+    <exclude domain="sharedpref" path="pico_extensions.xml" />
+    <exclude domain="sharedpref" path="innertube_session.xml" />
+    <exclude domain="sharedpref" path="app_updater_downloads.xml" />
+    <exclude domain="sharedpref" path="spotify_token_prefs.xml" />
+
+    <!-- Include user preferences and settings -->
+    <include domain="sharedpref" path="rhythm_preferences.xml" />
+    <include domain="sharedpref" path="pico_music_preferences.xml" />
 </full-backup-content>

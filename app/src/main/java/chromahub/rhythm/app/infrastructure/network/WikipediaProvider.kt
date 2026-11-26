@@ -69,7 +69,7 @@ object WikipediaProvider {
             val url = "https://en.wikipedia.org/api/rest_v1/page/summary/$encodedTitle"
             val request = Request.Builder()
                 .url(url)
-                .header("User-Agent", "Rhythm/1.0 (contact: github.com/cromaguy/Rhythm)")
+                .header("User-Agent", "PICO-Music/1.0 (Android; community fork of Rhythm)")
                 .build()
 
             client.newCall(request).execute().use { response ->

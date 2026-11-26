@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <string name="home">Գլխավոր</string>
     <string name="library">Գրադարան</string>
     <string name="search">Փնտրել</string>
     <string name="media3_notification_channel_name">Rhythm այժմ նվագում է</string>
     <string name="media3_notification_channel_description">Նվագարկման կառավարման տարրեր ծանուցման վահանակում, հետ ու առաջ անցնելու հնարավորություն և ալբոմի շապիկներ</string>
     <string name="widget_description_glance">Տես՝ ինչ է նվագարկվում, և կառավարիր երաժշտությունդ գլխավոր էկրանից՝ միացրու, դադարեցրու, փոխիր երգը և ավելին։</string>
-    <string name="widget_name_glance">Rhythm երաժշտություն</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Անհայտ երգիչ</string>
     <string name="play_pause">Նվագել/Կանգնեցնել</string>
     <string name="settings_widget">Վիդջեթ</string>

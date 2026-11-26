@@ -221,8 +221,8 @@ fun UpdatesSettingsScreen(onBackClick: () -> Unit) {
             knownIssues = listOf(
                 "Simulated sandbox mode overrides actual remote check updates."
             ),
-            downloadUrl = "https://github.com/cromaguy/Rhythm/releases",
-            apkAssetName = "rhythm-v3.2.0-beta.apk",
+            downloadUrl = "",
+            apkAssetName = "PICO-Music-preview.apk",
             apkSize = 18454937, // ~17.6 MB
             releaseNotes = "Simulated update notes",
             isPreRelease = true,
@@ -892,18 +892,11 @@ fun UpdatesSettingsScreen(onBackClick: () -> Unit) {
                         .clip(RoundedCornerShape(12.dp))
                         .clickable {
                             HapticUtils.performHapticFeedback(context, haptics, HapticType.HEAVY)
-                            val tag = currentVersion.versionName
-                            val releaseUrl = if (tag.startsWith("v", ignoreCase = true)) {
-                                "https://github.com/cromaguy/Rhythm/releases/tag/$displayVersionName"
-                            } else {
-                                "https://github.com/cromaguy/Rhythm/releases/tag/v$displayVersionName"
-                            }
-                            try {
-                                val intent = Intent(Intent.ACTION_VIEW, (releaseUrl).toUri())
-                                context.startActivity(intent)
-                            } catch (e: Exception) {
-                                Toast.makeText(context, R.string.updatessettingsscreen_unable_to_open_release, Toast.LENGTH_SHORT).show()
-                            }
+                            Toast.makeText(
+                                context,
+                                "PICO Music (${displayVersionName}) — built independently from open-source community tools.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                         .padding(vertical = 8.dp, horizontal = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally

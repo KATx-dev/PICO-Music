@@ -1,11 +1,14 @@
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
 <string name="home">Home</string>
     <string name="library">Library</string>
     <string name="search">Search</string>
-<string name="media3_notification_channel_name">Rhythm Now Playing</string>
+<string name="media3_notification_channel_name">PICO Music Now Playing</string>
     <string name="media3_notification_channel_description">Foreground playback controls, seek actions, and album artwork</string>    <string name="widget_description_glance">See what\'s playing and control your music from your home screen — play, pause, skip, and more.</string>
-    <string name="widget_name_glance">Rhythm Music</string>
+    <string name="widget_name_glance">PICO Music</string>
+    <string name="widget_name_lyrics">PICO Lyrics</string>
+    <string name="widget_name_cookie">PICO Cookie</string>
+    <string name="widget_name_stats">PICO Stats</string>
     <string name="unknown_artist">Unknown artist</string>
     <string name="play_pause">Play/Pause</string>
 <string name="settings_widget">Widget</string>
@@ -21,12 +24,12 @@
 <string name="settings_notifications">Notifications</string>
     <string name="settings_notifications_library_group">Library &amp; Sync</string>
     <string name="settings_notifications_updates_group">App Updates</string>
-    <string name="settings_notifications_rhythm_guard_group">Rhythm Guard Safety</string>
+    <string name="settings_notifications_rhythm_guard_group">Listening Guard Safety</string>
     <string name="settings_notifications_rhythm_pulse_group">Listening Highlights &amp; Tips</string>
     <string name="settings_notifications_system_group">System Controls</string>
     <string name="settings_library_operations_notifications">Library Operations &amp; Backups</string>
     <string name="settings_library_operations_notifications_desc">Show notifications for media indexing and playlist operations</string>
-    <string name="settings_update_notifications_merged_desc">Get alerts when new Rhythm updates are ready to install</string>
+    <string name="settings_update_notifications_merged_desc">Get alerts when new PICO Music updates are ready to install</string>
     <string name="settings_rhythm_guard_alert_notifications">Hearing Safety Warnings</string>
     <string name="settings_rhythm_guard_alert_notifications_desc">Alert when volume or sound exposure exceeds safe limits</string>
     <string name="settings_rhythm_guard_timer_notifications">Listening Break Assistant</string>
@@ -148,7 +151,7 @@
 <string name="operation_exporting_playlists">Backing up your custom playlists…</string>
     <string name="operation_exporting_playlists_location">Backing up playlists to storage…</string>
     <string name="operation_importing_playlist">Importing playlist file…</string>
-    <string name="notification_operations_channel_name">Rhythm Library Sync</string>
+    <string name="notification_operations_channel_name">PICO Music Library Sync</string>
     <string name="notification_operations_channel_desc">Progress notifications for library scanning, indexing, and playlist backups</string>
     <string name="notification_media_scan_title">Library Scan &amp; Indexing</string>
     <string name="notification_media_scan_stage_songs">Scanning storage for audio files…</string>
@@ -178,19 +181,19 @@
         <item quantity="other">Successfully imported \"%1$s\" (%2$d tracks).</item>
     </plurals>
     <string name="notification_playlist_import_failed">Playlist import failed. Verify the file format.</string>
-    <string name="notification_updater_channel_name">Rhythm System Updates</string>
+    <string name="notification_updater_channel_name">PICO Music System Updates</string>
     <string name="notification_updater_channel_desc">Download progress and release alerts for app updates</string>
-    <string name="notification_updater_title">Rhythm Software Update</string>
+    <string name="notification_updater_title">PICO Music Software Update</string>
     <string name="notification_updater_downloading">Downloading update: %1$d%%</string>
     <string name="notification_updater_download_complete">Update ready to install. Tap to proceed.</string>
     <string name="notification_updater_available_title">New Update Available</string>
-    <string name="notification_updater_available_text">A new version of Rhythm is available.</string>
-    <string name="notification_sleep_timer_channel_name">Rhythm Sleep Assistant</string>
+    <string name="notification_updater_available_text">A new version of PICO Music is available.</string>
+    <string name="notification_sleep_timer_channel_name">PICO Music Sleep Assistant</string>
     <string name="notification_sleep_timer_channel_desc">Countdowns and status alerts for active sleep timers</string>
     <string name="notification_sleep_timer_title">Sleep Timer Active</string>
     <string name="notification_sleep_timer_pause_in">Pausing playback in %1$s</string>
     <string name="notification_sleep_timer_stop_in">Stopping playback in %1$s</string>
-<string name="notification_streaming_channel_name">Rhythm Cloud Services</string>
+<string name="notification_streaming_channel_name">PICO Music Cloud Services</string>
     <string name="notification_streaming_channel_desc">Connection status and sync progress for online music services</string>
 <string name="notification_streaming_auth_title">Cloud Service Connected</string>
     <string name="notification_streaming_auth_connected">%1$s connected. Library syncing in background.</string>
@@ -342,7 +345,7 @@
     <string name="settings_about_report_bug">Report Bug or Suggest Feature</string>
 
 <string name="status_disabled">Disabled</string>
-<string name="home_title">Rhythm</string>
+<string name="home_title">PICO Music</string>
     <string name="home_settings_cd">Settings</string>
     <string name="home_no_featured_albums">No Featured Albums</string>
     <string name="home_no_featured_albums_desc">Add some albums to your library to see featured content</string>
@@ -363,7 +366,7 @@
     <string name="home_recommended_subtitle">Based on your listening history</string>
     <string name="home_no_recommendations">No Recommendations</string>
     <string name="home_no_recommendations_desc">Listen to some music to get personalized recommendations</string>
-<string name="home_listening_stats">Your Rhythm Stats</string>
+<string name="home_listening_stats">Your Listening Stats</string>
 
 <string name="home_recently_played">Recently Played</string>
     <string name="home_recently_played_subtitle">Continue your musical journey</string>
@@ -427,10 +430,10 @@
     <string name="search_recent_searches">Recent Searches</string>
     <string name="search_browse_by_genre">Browse by Genre</string>
 <string name="ui_dismiss">Dismiss</string>
-<string name="common_rhythm">Rhythm</string>
+<string name="common_rhythm">PICO Music</string>
     <string name="common_home">Home</string>
     <string name="common_library">Library</string>
-<string name="splash_tagline">Your Music, Your Rhythm</string>
+<string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">Ready to groove!</string>
 
 <string name="nav_no_matching_songs">No matching songs found</string>
@@ -457,7 +460,7 @@
     <string name="updates_channel_beta_desc">Receive pre-releases and release candidates.</string>
     <string name="updates_channel_nightly_desc">Receive bleeding-edge nightly builds compiled from the main branch.</string>
     <string name="onboarding_welcome_to">Welcome to</string>
-    <string name="onboarding_welcome_subtitle">Your Music, Your Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">Get Started</string>
     <string name="onboarding_android13_notice">Android 13+ Notice</string>
     <string name="onboarding_android13_desc">On newer Android versions, you\'ll see multiple permission requests. Please grant access to audio files and notifications for the best experience.</string>
@@ -481,8 +484,8 @@
     <string name="onboarding_library_how_works">How Library Organization Works</string>
     <string name="onboarding_library_1">Customize tab order in Library for quick access to your favorites</string>
     <string name="onboarding_library_2">Create and manage playlists directly from the Library screen</string>
-    <string name="onboarding_theme_title">Make Rhythm Yours</string>
-    <string name="onboarding_theme_desc">Personalize Rhythm\'s appearance to match your style. Pick where colors come from, choose a color scheme, or switch the font.</string>    <string name="onboarding_more_tuner">More Customization in Settings</string>
+    <string name="onboarding_theme_title">Make PICO Music Yours</string>
+    <string name="onboarding_theme_desc">Personalize PICO Music\'s appearance to match your style. Pick where colors come from, choose a color scheme, or switch the font.</string>    <string name="onboarding_more_tuner">More Customization in Settings</string>
     <string name="onboarding_tuner_1">Custom color schemes and album art color extraction</string>
     <string name="onboarding_tuner_2">Font customization and typography settings</string>
     <string name="onboarding_rhythm_guard_title">Protect Your Hearing</string>
@@ -527,7 +530,7 @@
     <string name="onboarding_media_scan_whitelist">Whitelist Mode: Show only songs from selected folders</string>
     
     <string name="onboarding_complete_title">You\'re All Set!</string>
-    <string name="onboarding_complete_desc">Rhythm is ready to play! Your music library is being scanned in the background. Here\'s what\'s configured:</string>
+    <string name="onboarding_complete_desc">PICO Music is ready to play! Your music library is being scanned in the background. Here\'s what\'s configured:</string>
     <string name="onboarding_whats_next">What\'s Next?</string>
     <string name="onboarding_next_browse">Browse your songs, albums, and artists</string>
     <string name="onboarding_next_create">Create your first playlist</string>
@@ -546,8 +549,8 @@
     <string name="onboarding_grant_permissions">Grant Permissions</string>
     <string name="onboarding_permissions_granted_desc">All necessary permissions have been granted. You are ready to proceed!</string>
     <string name="onboarding_redirect_settings_desc">To grant the required permissions, please navigate to the app settings on your device.</string>
-    <string name="onboarding_rationale_desc">Rhythm requires certain permissions to function correctly. Please grant them to continue.</string>
-    <string name="onboarding_permissions_required_desc">To fully utilize Rhythm\'s features, we need your permission to access certain device capabilities.</string>
+    <string name="onboarding_rationale_desc">PICO Music requires certain permissions to function correctly. Please grant them to continue.</string>
+    <string name="onboarding_permissions_required_desc">To fully utilize PICO Music\'s features, we need your permission to access certain device capabilities.</string>
     <string name="onboarding_permission_music_title">Music Library Access</string>
     <string name="onboarding_permission_music_desc">Read your local music files and display them in the app</string>
     <string name="onboarding_permission_bluetooth_title">Bluetooth Connectivity</string>
@@ -558,9 +561,9 @@
     <string name="onboarding_permission_tip_1">Grant all permissions for the best experience</string>
     <string name="onboarding_permission_tip_2">You can change permissions later in Settings</string>
 <string name="onboarding_default_screen_title">Default Landing Screen</string>
-    <string name="onboarding_default_screen_desc">Choose which screen opens when you launch Rhythm</string>
+    <string name="onboarding_default_screen_desc">Choose which screen opens when you launch PICO Music</string>
     <string name="onboarding_system_volume_title">System Volume Control</string>
-    <string name="onboarding_system_volume_desc">Allow your device\'s physical volume buttons to control Rhythm\'s playback volume.</string>
+    <string name="onboarding_system_volume_desc">Allow your device\'s physical volume buttons to control PICO Music\'s playback volume.</string>
     <string name="onboarding_auto_queue_title">Auto Add to Queue</string>
     <string name="onboarding_auto_queue_desc">Automatically create a contextual queue from the album/artist when playing a song.</string>
     <string name="onboarding_show_lyrics_title">Show Lyrics</string>
@@ -569,7 +572,7 @@
     <string name="onboarding_lyrics_source_desc">Choose which lyrics source to try first (with automatic fallback to others)</string>
 
     <string name="onboarding_player_theme_title">Playback &amp; Mini Player Themes</string>
-    <string name="onboarding_player_theme_desc">Personalize playback and the mini player. Pick the clean Rhythm design or the vibrant Expressive design, then fine-tune controls, layout, and progress styling.</string>
+    <string name="onboarding_player_theme_desc">Personalize playback and the mini player. Pick the clean Classic design or the vibrant Expressive design, then fine-tune controls, layout, and progress styling.</string>
 <string name="onboarding_update_check_failed">Update Check Failed</string>
     <string name="onboarding_ready_to_install">Ready to Install</string>
     <string name="onboarding_downloading_update">Downloading Update</string>
@@ -2118,7 +2121,7 @@
     <string name="pulse_heavy">Heavy listening</string>
     <string name="pulse_marathon">Marathon mode</string>
 <string name="settings_tip_theme_desc_1">Refresh your music player with lively AMOLED black and beautiful pastel colors.</string>
-    <string name="settings_tip_theme_desc_2">Make Rhythm truly yours by matching the app\'s accent to your system.</string>
+    <string name="settings_tip_theme_desc_2">Make PICO Music truly yours by matching the app\'s accent to your system.</string>
     <string name="settings_tip_media_scan_desc_1">Avoid unwanted audio clips. Explicitly define which folders we should scan for music.</string>
     <string name="settings_tip_media_scan_desc_2">Keep voice notes and ringtones away from your playlists using focus folders.</string>
     <string name="settings_tip_sleep_timer_desc_1">Drift off to sleep while your music is playing. We\'ll automatically pause it.</string>
@@ -2167,7 +2170,7 @@
     <string name="font_inter_desc">Clean and modern sans-serif font, highly readable</string>
     <string name="font_jetbrains_desc">Monospace font perfect for technical content</string>
     <string name="font_quicksand_desc">Rounded font with a softer, friendlier appearance</string>
-<string name="color_scheme_default_title">Rhythm Default</string>
+<string name="color_scheme_default_title">PICO Prism</string>
     <string name="color_scheme_default_desc">Material 3 baseline purple with rosy pink accents</string>
     <string name="color_scheme_warm_title">Warm Sunset</string>
     <string name="color_scheme_warm_desc">Cozy orange and red tones for a warm atmosphere</string>
@@ -2288,9 +2291,9 @@
         <item quantity="one">Export %1$d playlist to:</item>
         <item quantity="other">Export %1$d playlists to:</item>
     </plurals>
-<string name="dialog_switch_to_go">Switch to Rhythm Go?</string>
+<string name="dialog_switch_to_go">Play Online Stream?</string>
     <string name="dialog_switch_to_local">Switch to Local?</string>
-    <string name="dialog_switch_to_go_desc">This item belongs to Rhythm Go. Switch to Streaming Mode now to stream and play it?</string>
+    <string name="dialog_switch_to_go_desc">Play this track from your configured streaming service?</string>
     <string name="dialog_switch_to_local_desc">This item belongs to your Local Library. Switch to Local Mode now to play your offline tracks?</string>
 
 <string name="eq_preset_flat">Flat</string>
@@ -2459,7 +2462,7 @@
     <string name="carousel_style_hero_desc">1 side peek album</string>
 
     <!-- Widget preview sample text (launcher picker previews only, not user-facing copy) -->
-    <string name="widget_preview_brand" translatable="false">Rhythm</string>
+    <string name="widget_preview_brand" translatable="false">PICO Music</string>
     <string name="widget_preview_title" translatable="false">Midnight Drive</string>
     <string name="widget_preview_subtitle" translatable="false">Neon Waves</string>
     <string name="widget_preview_lyric_active" translatable="false">Forever running through the night</string>
@@ -2467,7 +2470,7 @@
     <string name="widget_preview_stats_time" translatable="false">12h 30m</string>
     <string name="widget_preview_stats_label" translatable="false">listening</string>
     <string name="widget_preview_stats_streak" translatable="false">30</string>
-<string name="theme_rhythm">Rhythm</string>
+<string name="theme_rhythm">PICO Classic</string>
     <string name="theme_expressive">Expressive</string>
     <string name="settings_managed_by_expressive_shapes">Managed by Expressive Shapes</string>
 <string name="shape_target_album_art">Album Artwork</string>
@@ -2756,7 +2759,7 @@
     <string name="settings_search_api_ytmusic_desc">Artist images and album artwork</string>
     <string name="widget_cookie_description">A cookie-shaped mini player showing your album art with play, previous, and next buttons.</string>
     <string name="widget_stats_description">See how many days in a row you\'ve listened to music — plus your best streak ever.</string>
-    <string name="widget_cookie_section_title">Rhythm Cookie Widget</string>
+    <string name="widget_cookie_section_title">PICO Cookie Widget</string>
     <string name="widget_cookie_bottom_left">Bottom Left Action</string>
     <string name="widget_cookie_bottom_right">Bottom Right Action</string>
     <string name="widget_cookie_action_skip">Skip Track</string>
@@ -2770,7 +2773,7 @@
     <string name="widget_cookie_action_favorite_desc">Toggles the current song favorite state</string>
     <string name="widget_cookie_action_none">None</string>
     <string name="widget_cookie_action_none_desc">Hides this corner button</string>
-    <string name="widget_stats_section_title">Rhythm Stats Widget</string>
+    <string name="widget_stats_section_title">PICO Stats Widget</string>
     <string name="widget_stats_time_range">Listening Time Range</string>
     <string name="widget_stats_range_all_time">All Time</string>
     <string name="widget_stats_range_all_time_desc">Total listening time since you started</string>
@@ -2793,15 +2796,15 @@
     <string name="add_to_playlist_named">Add to %1$s</string>
     <string name="released_on">Released: %1$s</string>
     <!-- Widget content descriptions -->
-    <string name="rhythmcookiewidget_rhythm_logo">Rhythm Logo</string>
+    <string name="rhythmcookiewidget_rhythm_logo">PICO Music Logo</string>
     <string name="rhythmlyricswidget_no_lyrics_available">No lyrics available</string>
-    <string name="rhythmlyricswidget_tagline">Your Music, Your Rhythm</string>
-    <string name="rhythmlyricswidget_open_to_play">Open Rhythm to play some music</string>
+    <string name="rhythmlyricswidget_tagline">Your Music. Everywhere.</string>
+    <string name="rhythmlyricswidget_open_to_play">Open PICO Music to play some music</string>
     <string name="rhythmstatswidget_listening">listening</string>
     <string name="rhythmwidgetpreview_lyrics_widget">Lyrics Widget</string>
     <string name="rhythmwidgetpreview_lyrics_3x2">Lyrics Widget — 3×2</string>
     <string name="rhythmwidgetpreview_lyrics_4x3">Lyrics Widget — 4×3</string>
-    <string name="rhythmwidgetpreview_cookie_widget">Rhythm Cookie Widget</string>
+    <string name="rhythmwidgetpreview_cookie_widget">PICO Cookie Widget</string>
     <string name="rhythmwidgetpreview_cookie_2x2">Cookie Widget — 2×2</string>
     <string name="rhythmwidgetpreview_cookie_resized_wide">Cookie Widget — resized wide</string>
     <!-- Player theme presets -->
@@ -2827,8 +2830,8 @@
     <string name="tile_playing_format">Playing: %1$s</string>
     <string name="tile_paused_format">Paused: %1$s</string>
     <!-- Settings & dialogs -->
-    <string name="backup_clip_label">Rhythm Backup</string>
-    <string name="crashlog_clip_label">Rhythm Crash Log</string>
+    <string name="backup_clip_label">PICO Music Backup</string>
+    <string name="crashlog_clip_label">PICO Music Crash Log</string>
     <string name="rhythmguardsettingsscreen_status">Rhythm Guard Status</string>
     <string name="betaprogrampopup_early_access_desc">Try new features before official release</string>
     <string name="betaprogrampopup_shape_the_future_desc">Your feedback directly influences development</string>
@@ -2842,7 +2845,7 @@
     <string name="search_view_all_count_format">See all %1$d songs</string>
     <!-- Onboarding -->
     <string name="onboarding_step_counter">Step %1$d of %2$d</string>
-    <string name="onboarding_configure_desc">Configure Rhythm as a local offline music player for audio files stored on your device, or connect to your self-hosted streaming services.</string>
+    <string name="onboarding_configure_desc">Configure PICO Music for local offline playback, online InnertubeX streaming, BitChord-compatible extensions, or self-hosted music servers.</string>
     <string name="onboarding_connected_to_format">Connected to %1$s as %2$s</string>
     <!-- Final sweep: remaining hardcoded strings -->
     <string name="mainactivity_preparing">Preparing&#8230;</string>
@@ -2997,8 +3000,8 @@
     <string name="streaming_downloading">Downloading&#8230;</string>
     <string name="streaming_remove_download">Remove Download</string>
     <string name="streaming_downloaded">Downloaded</string>
-    <string name="rhythm_go_offline_toast">Rhythm Go is offline</string>
-    <string name="rhythm_go_online_toast">Rhythm Go is back online</string>
+    <string name="rhythm_go_offline_toast">Online streaming is offline</string>
+    <string name="rhythm_go_online_toast">Online streaming is back online</string>
     <string name="streaming_downloaded_albums">Downloaded Albums</string>
     <string name="streaming_offline_lossless">Lossless</string>
     <string name="streaming_offline_complete_lossless">Downloaded • Lossless</string>
@@ -3082,4 +3085,16 @@
     <string name="viper_engine_status_title">Audio Engine Status</string>
     <string name="viper_engine_status_subtitle">ViPER4Android DSP Monitor</string>
     <string name="viper_engine_upstream">ViPER4Android on GitHub</string>
+
+    <!-- PICO Music Identity, Streaming, Extensions & Community Acknowledgements -->
+    <string name="pico_tagline">Your Music. Everywhere.</string>
+    <string name="settings_extensions">Extensions</string>
+    <string name="settings_extensions_desc">Manage BitChord-compatible music provider addons</string>
+    <string name="settings_streaming_providers">Streaming Providers</string>
+    <string name="settings_streaming_providers_desc">Configure InnertubeX online streaming and self-hosted servers</string>
+    <string name="settings_acknowledgements">Acknowledgements</string>
+    <string name="settings_acknowledgements_desc">Made possible by the open-source music community</string>
+    <string name="acknowledgements_subtitle">Made Possible by the Community</string>
+    <string name="acknowledgements_quote">Music is built by communities. PICO Music exists thanks to the developers, contributors, and open-source projects that keep making music more accessible. Thank you for being part of it.</string>
+    <string name="about_fork_notice">PICO Music is an independent open-source fork of Rhythm by Anjishnu Nandi (cromaguy), built under GPL-3.0-or-later. It is not an official Rhythm release.</string>
 </resources>

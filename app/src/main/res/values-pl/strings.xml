@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Rhythm</string>
+    <string name="app_name">PICO Music</string>
     <!-- Common Labels -->
     <string name="home">Dom</string>
     <string name="library">Biblioteka</string>
@@ -10,7 +10,7 @@
     <string name="media3_notification_channel_description">Sterowanie odtwarzaniem multimediów</string>
     <!-- Widget strings -->
     <string name="widget_description_glance">Muzyka Rhythm — sterowanie odtwarzaniem dzięki 9 responsywnym układom, projektowi Material 3 i aktualizacjom stanu w czasie rzeczywistym</string>
-    <string name="widget_name_glance">Rhythm Muzyka</string>
+    <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Artysta nieznany</string>
     <string name="play_pause">Odtwórz/Pauza</string>
     <!-- Widget Settings -->
@@ -320,7 +320,7 @@
     <!-- Status Labels -->
     <string name="status_disabled">Wyłączone</string>
     <!-- HomeScreen -->
-    <string name="home_title">Rhythm</string>
+    <string name="home_title">PICO Music</string>
     <string name="home_settings_cd">Ustawienia</string>
     <string name="home_no_featured_albums">Brak polecanych albumów</string>
     <string name="home_no_featured_albums_desc">Dodaj kilka albumów do swojej biblioteki, aby zobaczyć polecaną zawartość</string>
@@ -424,11 +424,11 @@
     <!-- Common UI -->
     <string name="ui_dismiss">Odrzuć</string>
     <!-- Common Terms -->
-    <string name="common_rhythm">Rhythm</string>
+    <string name="common_rhythm">PICO Music</string>
     <string name="common_home">Dom</string>
     <string name="common_library">Biblioteka</string>
     <!-- Splash/Loading -->
-    <string name="splash_tagline">Twoja muzyka, Twoje Rhythm</string>
+    <string name="splash_tagline">Your Music. Everywhere.</string>
     <string name="splash_ready">Gotowi do zabawy!</string>
     <!-- Audio Quality -->
     
@@ -456,7 +456,7 @@
     <string name="updates_channel_desc">Wybierz kanał aktualizacji, który chcesz śledzić:</string>
     <!-- Onboarding -->
     <string name="onboarding_welcome_to">Witamy w</string>
-    <string name="onboarding_welcome_subtitle">Twoja muzyka, Twoje Rhythm</string>
+    <string name="onboarding_welcome_subtitle">Your Music. Everywhere.</string>
     <string name="onboarding_get_started">Rozpocznij</string>
     <string name="onboarding_android13_notice">Android 13+ Uwaga</string>
     <string name="onboarding_android13_desc">W nowszych wersjach Android zobaczysz wiele próśb o pozwolenie. Aby uzyskać najlepszą jakość, zezwól na dostęp do plików audio i powiadomień.</string>

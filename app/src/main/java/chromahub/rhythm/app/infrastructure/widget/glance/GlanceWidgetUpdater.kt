@@ -272,7 +272,7 @@ try {
                     .setLongLabel(if (isPlaying) "Pause Music" else "Play Music")
                     .setIcon(android.graphics.drawable.Icon.createWithResource(context, if (isPlaying) chromahub.rhythm.app.R.drawable.ic_pause_shortcut else chromahub.rhythm.app.R.drawable.ic_play_shortcut))
                     .setIntent(Intent(context, chromahub.rhythm.app.activities.MainActivity::class.java).apply {
-                        action = "chromahub.rhythm.app.action.SHORTCUT_PLAY_PAUSE"
+                        action = "com.pico.music.action.SHORTCUT_PLAY_PAUSE"
                     })
                     .build()
 
@@ -281,7 +281,7 @@ try {
                     .setLongLabel("Next Track")
                     .setIcon(android.graphics.drawable.Icon.createWithResource(context, chromahub.rhythm.app.R.drawable.ic_skip_next_shortcut))
                     .setIntent(Intent(context, chromahub.rhythm.app.activities.MainActivity::class.java).apply {
-                        action = "chromahub.rhythm.app.action.SHORTCUT_SKIP_NEXT"
+                        action = "com.pico.music.action.SHORTCUT_SKIP_NEXT"
                     })
                     .build()
 
@@ -290,7 +290,7 @@ try {
                     .setLongLabel("Previous Track")
                     .setIcon(android.graphics.drawable.Icon.createWithResource(context, chromahub.rhythm.app.R.drawable.ic_skip_previous_shortcut))
                     .setIntent(Intent(context, chromahub.rhythm.app.activities.MainActivity::class.java).apply {
-                        action = "chromahub.rhythm.app.action.SHORTCUT_SKIP_PREVIOUS"
+                        action = "com.pico.music.action.SHORTCUT_SKIP_PREVIOUS"
                     })
                     .build()
 

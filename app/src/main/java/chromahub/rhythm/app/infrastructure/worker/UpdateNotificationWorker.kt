@@ -190,6 +190,13 @@ class UpdateNotificationWorker(
      */
     private suspend fun checkForUpdateWithSmartPolling(channel: String): UpdateCheckResult {
         lastCheckErrorMessage = null
+        // PICO Music is an independent community fork; do not poll upstream Rhythm releases as PICO updates.
+        return UpdateCheckResult.UP_TO_DATE
+    }
+
+    @Suppress("unused")
+    private suspend fun checkForUpdateWithSmartPollingLegacy(channel: String): UpdateCheckResult {
+        lastCheckErrorMessage = null
 
         try {
             val lastETag = prefs.getString(KEY_LAST_ETAG, null)

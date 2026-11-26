@@ -309,9 +309,9 @@ class MainActivity : AppCompatActivity() {
                             hasHandledStartupIntents = true
                             val shouldHandleStartupIntent = startupIntent?.let {
                                 (it.action == Intent.ACTION_VIEW && it.data != null) ||
-                                    it.action == "chromahub.rhythm.app.action.SHORTCUT_PLAY_PAUSE" ||
-                                    it.action == "chromahub.rhythm.app.action.SHORTCUT_SKIP_NEXT" ||
-                                    it.action == "chromahub.rhythm.app.action.SHORTCUT_SKIP_PREVIOUS" ||
+                                    it.action == "com.pico.music.action.SHORTCUT_PLAY_PAUSE" ||
+                                    it.action == "com.pico.music.action.SHORTCUT_SKIP_NEXT" ||
+                                    it.action == "com.pico.music.action.SHORTCUT_SKIP_PREVIOUS" ||
                                     it.getBooleanExtra(EXTRA_OPEN_PLAYER, false) ||
                                     it.getBooleanExtra(EXTRA_OPEN_QUEUE, false) ||
                                     !it.getStringExtra(EXTRA_OPEN_SETTINGS_SUBROUTE).isNullOrBlank()
@@ -811,7 +811,7 @@ class MainActivity : AppCompatActivity() {
             }
             
             when (intent.action) {
-                "chromahub.rhythm.app.action.SHORTCUT_PLAY_PAUSE" -> {
+                "com.pico.music.action.SHORTCUT_PLAY_PAUSE" -> {
                     ShortcutManagerCompat.reportShortcutUsed(this, "shortcut_play_pause")
                     Log.d(TAG, "Received Play/Pause shortcut action")
                     val playPauseIntent = Intent(this, chromahub.rhythm.app.infrastructure.service.MediaPlaybackService::class.java).apply {
@@ -819,7 +819,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     ServiceStartUtils.startServiceSafely(this, playPauseIntent, TAG, "shortcut_play_pause")
                 }
-                "chromahub.rhythm.app.action.SHORTCUT_SKIP_NEXT" -> {
+                "com.pico.music.action.SHORTCUT_SKIP_NEXT" -> {
                     ShortcutManagerCompat.reportShortcutUsed(this, "shortcut_next")
                     Log.d(TAG, "Received Skip Next shortcut action")
                     val nextIntent = Intent(this, chromahub.rhythm.app.infrastructure.service.MediaPlaybackService::class.java).apply {
@@ -827,7 +827,7 @@ class MainActivity : AppCompatActivity() {
                     }
                     ServiceStartUtils.startServiceSafely(this, nextIntent, TAG, "shortcut_skip_next")
                 }
-                "chromahub.rhythm.app.action.SHORTCUT_SKIP_PREVIOUS" -> {
+                "com.pico.music.action.SHORTCUT_SKIP_PREVIOUS" -> {
                     ShortcutManagerCompat.reportShortcutUsed(this, "shortcut_previous")
                     Log.d(TAG, "Received Skip Previous shortcut action")
                     val prevIntent = Intent(this, chromahub.rhythm.app.infrastructure.service.MediaPlaybackService::class.java).apply {

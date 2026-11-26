@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- PICO Music Adaptive Icon Background -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
 
+    <path android:pathData="M0,0 h108 v108 h-108 z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="108"
+                android:endY="108"
+                android:startColor="#1E1848"
+                android:centerColor="#13102B"
+                android:endColor="#0A0918" />
+        </aapt:attr>
+    </path>
+
     <path
-        android:pathData="M0,0 h108 v108 h-108 z"
-        android:fillColor="@color/launcher_bg" /> </vector>
+        android:pathData="M54,54 m-44,0 a44,44 0 1,0 88,0 a44,44 0 1,0 -88,0"
+        android:fillAlpha="0.35">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="54"
+                android:centerY="48"
+                android:gradientRadius="44"
+                android:startColor="#5B3FD9"
+                android:endColor="#0013102B" />
+        </aapt:attr>
+    </path>
+</vector>

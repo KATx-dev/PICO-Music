@@ -170,6 +170,7 @@ object SettingsRoutes {
     const val PLAYLISTS = "playlist_settings"
     const val DEFAULT_PLAYLISTS = "default_playlists_settings"
     const val API_MANAGEMENT = "api_management_settings"
+    const val EXTENSIONS = "extensions_settings"
     const val CACHE_MANAGEMENT = "cache_management_settings"
     const val BACKUP_RESTORE = "backup_restore_settings"
     const val THEME_CUSTOMIZATION = "theme_customization_settings"
@@ -403,6 +404,7 @@ fun SettingsScreen(
                     add(SettingItem(RhythmIcons.Notifications, context.getString(R.string.settings_notifications), context.getString(R.string.settings_notifications_desc), palette = SettingsPalettes.Coral, onClick = { onNavigateTo(SettingsRoutes.NOTIFICATIONS) }))
                     // API Management/Integrations is available in both LOCAL and STREAMING modes
                     add(SettingItem(MaterialSymbolIcon("hub"), context.getString(R.string.settings_api_management), context.getString(R.string.settings_api_management_desc), palette = SettingsPalettes.Slate, onClick = { onNavigateTo(SettingsRoutes.API_MANAGEMENT) }))
+                    add(SettingItem(MaterialSymbolIcon("extension"), "Extensions", "Manage BitChord-compatible addon sources", palette = SettingsPalettes.Purple, onClick = { onNavigateTo(SettingsRoutes.EXTENSIONS) }))
                 }
             ),
             // 7. Data & Storage - split into shared and local-only items
@@ -1184,6 +1186,7 @@ fun SettingsScreenWrapper(
                             }
                         )
                         SettingsRoutes.API_MANAGEMENT -> ApiManagementSettingsScreen(onBackClick = handleBack)
+                        SettingsRoutes.EXTENSIONS -> com.pico.music.extensions.ui.ExtensionsSettingsScreen(onBackClick = handleBack)
                         SettingsRoutes.CACHE_MANAGEMENT -> CacheManagementSettingsScreen(onBackClick = handleBack)
                         SettingsRoutes.BACKUP_RESTORE -> BackupRestoreSettingsScreen(onBackClick = handleBack)
                         SettingsRoutes.THEME_CUSTOMIZATION -> ThemeCustomizationSettingsScreen(onBackClick = handleBack)
@@ -1340,6 +1343,7 @@ fun SettingsScreenWrapper(
                     }
                 )
                 SettingsRoutes.API_MANAGEMENT -> ApiManagementSettingsScreen(onBackClick = handleBack)
+                SettingsRoutes.EXTENSIONS -> com.pico.music.extensions.ui.ExtensionsSettingsScreen(onBackClick = handleBack)
                 SettingsRoutes.CACHE_MANAGEMENT -> CacheManagementSettingsScreen(onBackClick = handleBack)
                 SettingsRoutes.BACKUP_RESTORE -> BackupRestoreSettingsScreen(onBackClick = handleBack)
                 SettingsRoutes.THEME_CUSTOMIZATION -> ThemeCustomizationSettingsScreen(onBackClick = handleBack)

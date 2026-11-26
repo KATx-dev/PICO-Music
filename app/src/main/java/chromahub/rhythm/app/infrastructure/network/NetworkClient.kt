@@ -137,7 +137,7 @@ object NetworkClient {
         extraHeaders: Map<String, String> = emptyMap()
     ) = Interceptor { chain ->
         try {
-            val userAgent = customUserAgent ?: "Rhythm/${BuildConfig.VERSION_NAME} (https://github.com/cromaguy/Rhythm)"
+            val userAgent = customUserAgent ?: "PICO-Music/${BuildConfig.VERSION_NAME} (Android)"
             val requestBuilder = chain.request().newBuilder()
                 .header("User-Agent", userAgent)
                 .header("Accept", "application/json")
@@ -151,7 +151,7 @@ object NetworkClient {
         }
     }
 
-    private fun deezerHeadersInterceptor() = appHeadersInterceptor("RhythmApp/${BuildConfig.VERSION_NAME} (Android)")
+    private fun deezerHeadersInterceptor() = appHeadersInterceptor("PICO-Music/${BuildConfig.VERSION_NAME} (Android)")
     
     private val deezerHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
@@ -176,8 +176,8 @@ object NetworkClient {
     private val lrclibHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()
             .addInterceptor(appHeadersInterceptor(
-                customUserAgent = "Rhythm/${BuildConfig.VERSION_NAME} (https://github.com/cromaguy/Rhythm)",
-                extraHeaders = mapOf("Lrclib-Client" to "Rhythm/${BuildConfig.VERSION_NAME} (https://github.com/cromaguy/Rhythm)")
+                customUserAgent = "PICO-Music/${BuildConfig.VERSION_NAME} (Android)",
+                extraHeaders = mapOf("Lrclib-Client" to "PICO-Music/${BuildConfig.VERSION_NAME} (Android)")
             ))
             .addInterceptor(loggingInterceptor)
             .addInterceptor(retryInterceptor)

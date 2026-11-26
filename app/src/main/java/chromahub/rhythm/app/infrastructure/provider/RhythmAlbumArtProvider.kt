@@ -3,8 +3,11 @@
  * Copyright (C) 2026 The Gramophone authors
  *
  * SPDX-FileCopyrightText: 2026 Anjishnu Nandi <https://github.com/cromaguy>
+ * SPDX-FileCopyrightText: 2026 PICO Music Contributors
  * SPDX-FileCopyrightText: 2026 The Gramophone authors <https://github.com/FoedusProgramme/Gramophone>
  * SPDX-License-Identifier: GPL-3.0-or-later
+ *
+ * Modified for PICO Music (canonical path validation for exported ContentProvider).
  */
 
 package chromahub.rhythm.app.infrastructure.provider
@@ -46,6 +49,11 @@ class RhythmAlbumArtProvider : ContentProvider() {
 
     companion object {
         private const val TAG = "RhythmAlbumArtProvider"
+
+        private val ALLOWED_AUDIO_EXTENSIONS = setOf(
+            "mp3", "flac", "m4a", "mp4", "aac", "ogg", "oga", "opus",
+            "wav", "aiff", "aif", "alac", "wma", "mka", "wv", "ape", "dsf", "dff"
+        )
 
         /** Authority for the ContentProvider that serves artwork to external processes. */
         const val PROVIDER_AUTHORITY = "${BuildConfig.APPLICATION_ID}.albumart"
@@ -155,7 +163,7 @@ class RhythmAlbumArtProvider : ContentProvider() {
         }
 
         val resolvedFilePath = if (!songFilePath.isNullOrBlank()) {
-            songFilePath
+            sanitizeExternalAudioPath(appContext, songFilePath)
         } else {
             MediaUtils.resolveFilePathFromUri(appContext, songUri)
         }
@@ -206,7 +214,7 @@ class RhythmAlbumArtProvider : ContentProvider() {
         val appContext = context?.applicationContext
 
         try {
-            val memoryFile = MemoryFile("${appContext?.packageName ?: "rhythm"}.albumart", bytes.size)
+            val memoryFile = MemoryFile("${appContext?.packageName ?: "com.pico.music"}.albumart", bytes.size)
             val pfd = try {
                 val fdMethod = memoryFile.javaClass.getMethod("getFileDescriptor")
                 val fd = fdMethod.invoke(memoryFile) as FileDescriptor
@@ -258,4 +266,41 @@ class RhythmAlbumArtProvider : ContentProvider() {
         selection: String?,
         selectionArgs: Array<out String>?
     ): Int = throw UnsupportedOperationException("RhythmAlbumArtProvider is read-only")
+
+    /**
+     * Validates caller-supplied `songFile` query paths for this exported provider so external callers
+     * cannot traverse or read private app storage directories or arbitrary non-audio files.
+     */
+    private fun sanitizeExternalAudioPath(context: android.content.Context, rawPath: String): String? {
+        val trimmed = rawPath.trim()
+        if (trimmed.isEmpty() || trimmed.indexOf('\u0000') >= 0) return null
+        if (trimmed.contains("..")) return null
+        return try {
+            val file = File(trimmed)
+            if (!file.isAbsolute) return null
+            val canonical = file.canonicalFile
+            val canonicalPath = canonical.path
+            val privateRoots = buildList {
+                runCatching { context.dataDir?.canonicalPath }.getOrNull()?.let(::add)
+                runCatching { context.filesDir?.canonicalPath }.getOrNull()?.let(::add)
+                runCatching { context.cacheDir?.canonicalPath }.getOrNull()?.let(::add)
+                runCatching { context.codeCacheDir?.canonicalPath }.getOrNull()?.let(::add)
+                runCatching { context.noBackupFilesDir?.canonicalPath }.getOrNull()?.let(::add)
+            }
+            if (privateRoots.any { root ->
+                    canonicalPath == root || canonicalPath.startsWith("$root${File.separator}")
+                } || canonicalPath.startsWith("/data/data/") || canonicalPath.startsWith("/data/user/")) {
+                Log.w(TAG, "Rejected artwork query targeting app-private storage")
+                return null
+            }
+            val ext = canonical.extension.lowercase()
+            if (ext !in ALLOWED_AUDIO_EXTENSIONS || !canonical.isFile) {
+                return null
+            }
+            canonicalPath
+        } catch (e: Exception) {
+            Log.w(TAG, "Rejected invalid artwork file path", e)
+            null
+        }
+    }
 }

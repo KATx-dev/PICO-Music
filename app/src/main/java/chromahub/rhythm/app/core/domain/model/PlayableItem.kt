@@ -41,5 +41,6 @@ enum class SourceType {
     APPLE_MUSIC,
     YOUTUBE_MUSIC,
     DEEZER,
+    BITCHORD_EXTENSION,
     UNKNOWN
 }

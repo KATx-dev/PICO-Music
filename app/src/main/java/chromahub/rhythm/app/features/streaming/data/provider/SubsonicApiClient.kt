@@ -865,7 +865,7 @@ class SubsonicApiClient internal constructor(
                 val request = Request.Builder()
                     .url(url)
                     .header("Accept", "application/json")
-                    .header("User-Agent", "Rhythm/${chromahub.rhythm.app.BuildConfig.VERSION_NAME} (Android)")
+                    .header("User-Agent", "PICO-Music/${chromahub.rhythm.app.BuildConfig.VERSION_NAME} (Android)")
                     .get()
                     .build()
 
