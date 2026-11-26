@@ -2267,6 +2267,7 @@ class StreamingMusicViewModel(application: Application) : AndroidViewModel(appli
             SourceType.APPLE_MUSIC,
             SourceType.YOUTUBE_MUSIC,
             SourceType.DEEZER,
+            SourceType.BITCHORD_EXTENSION,
             SourceType.LOCAL,
             SourceType.UNKNOWN -> StreamingServiceId.SUBSONIC
         }
@@ -2292,6 +2293,7 @@ class StreamingMusicViewModel(application: Application) : AndroidViewModel(appli
             SourceType.APPLE_MUSIC -> "Apple Music"
             SourceType.YOUTUBE_MUSIC -> "YouTube Music"
             SourceType.DEEZER -> "Deezer"
+            SourceType.BITCHORD_EXTENSION -> "Extension"
             SourceType.LOCAL -> "Local"
             SourceType.UNKNOWN -> "Unknown"
         }

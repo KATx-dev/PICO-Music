@@ -5,15 +5,15 @@
 
 package com.pico.music.innertube
 
-import MetrolistGroup.innertubex.InnerTube
-import MetrolistGroup.innertubex.YouTubeClient
-import MetrolistGroup.innertubex.extractor.AudioQuality
-import MetrolistGroup.innertubex.extractor.ContentHints
-import MetrolistGroup.innertubex.extractor.InnerTubeExtractor
-import MetrolistGroup.innertubex.extractor.PlayerConfigRepository
-import MetrolistGroup.innertubex.extractor.RemotePlayerConfigStore
-import MetrolistGroup.innertubex.extractor.YouTubeCipherService
-import MetrolistGroup.innertubex.extractor.YtConfigParserImpl
+import com.metrolist.innertubex.InnerTube
+import com.metrolist.innertubex.cipher.PlayerConfigRepository
+import com.metrolist.innertubex.cipher.RemotePlayerConfigStore
+import com.metrolist.innertubex.cipher.YouTubeCipherService
+import com.metrolist.innertubex.extraction.AudioQuality
+import com.metrolist.innertubex.extraction.ContentHints
+import com.metrolist.innertubex.extraction.InnerTubeExtractor
+import com.metrolist.innertubex.extraction.YtConfigParserImpl
+import com.metrolist.innertubex.models.YouTubeClient
 import android.util.Log
 import com.pico.music.core.unified.ManifestType
 import com.pico.music.core.unified.ResolvedStream
@@ -132,7 +132,7 @@ class InnertubeXClientManager {
     ): ResolvedStream? {
         val audioQuality = when (quality) {
             StreamQuality.LOW -> AudioQuality.LOW
-            StreamQuality.NORMAL -> AudioQuality.MEDIUM
+            StreamQuality.NORMAL -> AudioQuality.AUTO
             StreamQuality.HIGH,
             StreamQuality.LOSSLESS,
             StreamQuality.HI_RES -> AudioQuality.HIGH
@@ -141,14 +141,14 @@ class InnertubeXClientManager {
         val extracted = runCatching {
             extractor.extract(
                 videoId = videoId,
-                hints = ContentHints(wantVideo = false),
+                hints = ContentHints(),
                 audioQuality = audioQuality
             )
         }.onFailure {
             Log.w(TAG, "InnertubeX stream extraction failed for videoId=$videoId", it)
         }.getOrNull() ?: return null
 
-        val url = extracted.url
+        val url = extracted.audioUrl
         if (url.isBlank()) return null
 
         val mime = extracted.mimeType
@@ -163,7 +163,10 @@ class InnertubeXClientManager {
             headers = extracted.headers,
             mimeType = mime,
             manifestType = manifestType,
-            expiresAtMs = null // Uses StreamResolutionCache's ephemeral TTL
+            bitrateKbps = extracted.bitrate?.let { it / 1000 },
+            codec = extracted.codecs,
+            sampleRateHz = extracted.sampleRate,
+            expiresAtMs = extracted.expiresAt?.toEpochMilliseconds()
         )
     }
 }
