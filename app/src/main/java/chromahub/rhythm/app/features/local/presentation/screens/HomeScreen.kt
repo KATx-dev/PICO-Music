@@ -298,17 +298,6 @@ fun HomeScreen(
     val isTablet = windowScreenWidthDp() >= 600
     val isLandscapeTablet = isTablet && windowScreenWidthDp() > windowScreenHeightDp()
     val appSettings = remember { AppSettings.getInstance(context) }
-    val unifiedRepository = remember(context) {
-        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
-    }
-    var unifiedHomeSections by remember {
-        mutableStateOf<List<com.pico.music.core.unified.UnifiedHomeSection>>(emptyList())
-    }
-    LaunchedEffect(Unit) {
-        unifiedHomeSections = runCatching {
-            unifiedRepository.getHomeSections()
-        }.getOrDefault(emptyList())
-    }
 
     // Home header customization
     val headerDisplayMode by appSettings.homeHeaderDisplayMode.collectAsState()
@@ -1221,17 +1210,6 @@ private fun StreamingHomeWelcomeContent(
     val context = LocalContext.current
     val haptics = LocalHapticFeedback.current
     val appSettings = remember { AppSettings.getInstance(context) }
-    val unifiedRepository = remember(context) {
-        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
-    }
-    var unifiedHomeSections by remember {
-        mutableStateOf<List<com.pico.music.core.unified.UnifiedHomeSection>>(emptyList())
-    }
-    LaunchedEffect(Unit) {
-        unifiedHomeSections = runCatching {
-            unifiedRepository.getHomeSections()
-        }.getOrDefault(emptyList())
-    }
 
     LazyColumn(
         modifier = modifier
@@ -1416,6 +1394,17 @@ private fun ModernScrollableContent(
 
     // Home Screen Customization Settings
     val appSettings = AppSettings.getInstance(context)
+    val unifiedRepository = remember(context) {
+        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
+    }
+    var unifiedHomeSections by remember {
+        mutableStateOf<List<com.pico.music.core.unified.UnifiedHomeSection>>(emptyList())
+    }
+    LaunchedEffect(Unit) {
+        unifiedHomeSections = runCatching {
+            unifiedRepository.getHomeSections()
+        }.getOrDefault(emptyList())
+    }
     val sectionOrder by appSettings.homeSectionOrder.collectAsState()
     val showRecentlyPlayed by appSettings.homeShowRecentlyPlayed.collectAsState()
     val showDiscoverCarousel by appSettings.homeShowDiscoverCarousel.collectAsState()
@@ -3132,17 +3121,6 @@ private fun ModernRecommendedSection(
     val context = LocalContext.current
     val haptics = LocalHapticFeedback.current
     val appSettings = remember { AppSettings.getInstance(context) }
-    val unifiedRepository = remember(context) {
-        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
-    }
-    var unifiedHomeSections by remember {
-        mutableStateOf<List<com.pico.music.core.unified.UnifiedHomeSection>>(emptyList())
-    }
-    LaunchedEffect(Unit) {
-        unifiedHomeSections = runCatching {
-            unifiedRepository.getHomeSections()
-        }.getOrDefault(emptyList())
-    }
     val artistSeparatorEnabled by appSettings.artistSeparatorEnabled.collectAsState()
     val artistSeparatorDelimiters by appSettings.artistSeparatorDelimiters.collectAsState()
     val effectiveDelimiters = artistSeparatorDelimiters.ifBlank { AppSettings.DEFAULT_ARTIST_SEPARATOR_DELIMITERS }
