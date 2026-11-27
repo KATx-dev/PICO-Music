@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <full-backup-content>
-    <!-- Exclude internal database files -->
-    <exclude domain="database" path="rhythm_database" />
-    <exclude domain="database" path="rhythm_database-shm" />
-    <exclude domain="database" path="rhythm_database-wal" />
-    <exclude domain="database" path="pico_music_database" />
-    <exclude domain="database" path="pico_music_database-shm" />
-    <exclude domain="database" path="pico_music_database-wal" />
-
-    <!-- Exclude caches -->
-    <exclude domain="root" path="cache" />
-    <exclude domain="root" path="code_cache" />
-
-    <!-- Exclude sensitive credentials, session tokens, extension configs, and updater state -->
-    <exclude domain="sharedpref" path="streaming_service_sessions.xml" />
-    <exclude domain="sharedpref" path="pico_extensions.xml" />
-    <exclude domain="sharedpref" path="innertube_session.xml" />
-    <exclude domain="sharedpref" path="app_updater_downloads.xml" />
-    <exclude domain="sharedpref" path="spotify_token_prefs.xml" />
-
-    <!-- Include user preferences and settings -->
+    <!-- Listing include paths restricts backup to these files only, so no databases,
+         caches, tokens, session stores or updater state are ever backed up. -->
     <include domain="sharedpref" path="rhythm_preferences.xml" />
     <include domain="sharedpref" path="pico_music_preferences.xml" />
 </full-backup-content>
