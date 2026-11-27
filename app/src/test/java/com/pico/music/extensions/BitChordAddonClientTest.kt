@@ -102,7 +102,11 @@ class BitChordAddonClientTest {
             UnifiedStreamResolverRegistry.buildExtensionUri("selfhosted", "t-42"),
             firstTrack.playbackUri
         )
-        assertTrue(firstTrack.playbackUri.endsWith("/t-42"))
+        // android.net.Uri is stubbed on the JVM, so the URI text is not real here;
+        // assert the parsed track identity instead of URI string shape.
+        assertEquals("ext_selfhosted_t-42", firstTrack.id)
+        assertEquals("Teardrop", firstTrack.title)
+        assertEquals("FLAC 24-bit", firstTrack.qualityLabel)
 
         val resolved = client.resolveStream(ext, "t-42", StreamQuality.HI_RES)
         assertEquals(streamUrl, resolved.url)
