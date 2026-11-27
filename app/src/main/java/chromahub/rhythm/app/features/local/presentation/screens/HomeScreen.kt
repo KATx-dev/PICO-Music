@@ -298,6 +298,17 @@ fun HomeScreen(
     val isTablet = windowScreenWidthDp() >= 600
     val isLandscapeTablet = isTablet && windowScreenWidthDp() > windowScreenHeightDp()
     val appSettings = remember { AppSettings.getInstance(context) }
+    val unifiedRepository = remember(context) {
+        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
+    }
+    var unifiedHomeSections by remember {
+        mutableStateOf<List<com.pico.music.core.unified.UnifiedHomeSection>>(emptyList())
+    }
+    LaunchedEffect(Unit) {
+        unifiedHomeSections = runCatching {
+            unifiedRepository.getHomeSections()
+        }.getOrDefault(emptyList())
+    }
 
     // Home header customization
     val headerDisplayMode by appSettings.homeHeaderDisplayMode.collectAsState()
@@ -1210,6 +1221,17 @@ private fun StreamingHomeWelcomeContent(
     val context = LocalContext.current
     val haptics = LocalHapticFeedback.current
     val appSettings = remember { AppSettings.getInstance(context) }
+    val unifiedRepository = remember(context) {
+        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
+    }
+    var unifiedHomeSections by remember {
+        mutableStateOf<List<com.pico.music.core.unified.UnifiedHomeSection>>(emptyList())
+    }
+    LaunchedEffect(Unit) {
+        unifiedHomeSections = runCatching {
+            unifiedRepository.getHomeSections()
+        }.getOrDefault(emptyList())
+    }
 
     LazyColumn(
         modifier = modifier
@@ -1922,6 +1944,46 @@ private fun ModernScrollableContent(
                 }
             }
         }
+
+            unifiedHomeSections.filter { it.tracks.isNotEmpty() }.forEach { section ->
+                item(key = "unified_home_${section.id}") {
+                    val sectionSongs = remember(section) {
+                        section.tracks.map { track ->
+                            Song(
+                                id = track.id,
+                                title = track.title,
+                                artist = track.artist,
+                                album = track.album.ifBlank { track.musicSource.badgeLabel },
+                                duration = track.duration,
+                                uri = android.net.Uri.parse(track.playbackUri),
+                                artworkUri = track.artworkUri?.takeIf { it.isNotBlank() }?.let(android.net.Uri::parse)
+                            )
+                        }
+                    }
+                    Column(
+                        modifier = Modifier.padding(horizontal = horizontalPadding),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        ModernSectionTitle(
+                            title = section.title,
+                            subtitle = section.subtitle ?: section.musicSource.badgeLabel,
+                            onPlayAll = {
+                                if (sectionSongs.isNotEmpty()) {
+                                    musicViewModel.playSongs(sectionSongs)
+                                }
+                            }
+                        )
+                        ModernRecommendedSection(
+                            recommendedSongs = sectionSongs,
+                            artists = emptyList(),
+                            onSongClick = onSongClick,
+                            onPlayClick = { songsToPlay ->
+                                musicViewModel.playSongs(songsToPlay)
+                            }
+                        )
+                    }
+                }
+            }
 
             item {
                 Spacer(modifier = Modifier.height(30.dp))
@@ -3070,6 +3132,17 @@ private fun ModernRecommendedSection(
     val context = LocalContext.current
     val haptics = LocalHapticFeedback.current
     val appSettings = remember { AppSettings.getInstance(context) }
+    val unifiedRepository = remember(context) {
+        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
+    }
+    var unifiedHomeSections by remember {
+        mutableStateOf<List<com.pico.music.core.unified.UnifiedHomeSection>>(emptyList())
+    }
+    LaunchedEffect(Unit) {
+        unifiedHomeSections = runCatching {
+            unifiedRepository.getHomeSections()
+        }.getOrDefault(emptyList())
+    }
     val artistSeparatorEnabled by appSettings.artistSeparatorEnabled.collectAsState()
     val artistSeparatorDelimiters by appSettings.artistSeparatorDelimiters.collectAsState()
     val effectiveDelimiters = artistSeparatorDelimiters.ifBlank { AppSettings.DEFAULT_ARTIST_SEPARATOR_DELIMITERS }

@@ -4,7 +4,7 @@
     <string name="home">Avaleht</string>
     <string name="library">Muusikakogu</string>
     <string name="search">Otsi</string>
-    <string name="media3_notification_channel_name">Hetkel esitamisel Rhythm\'is</string>
+    <string name="media3_notification_channel_name">Hetkel esitamisel PICO Music\'is</string>
     <string name="media3_notification_channel_description">Esiplaanil olevad taasesituse juhtnupud, kerimine ja kaanepildid</string>
     <string name="widget_name_glance">PICO Music</string>
     <string name="unknown_artist">Tundmatu esitaja</string>

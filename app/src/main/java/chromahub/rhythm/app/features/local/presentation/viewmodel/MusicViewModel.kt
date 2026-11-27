@@ -7978,7 +7978,7 @@ class MusicViewModel(application: Application) : AndroidViewModel(application) {
                             val totalSongs = dedupedPlaylists.sumOf { it.songs.size }
                             Log.d(TAG, "Batch import from Rhythm backup: $playlistCount playlists, $totalSongs songs")
 
-                            val message = "Successfully imported $playlistCount playlist(s) with $totalSongs song(s) from Rhythm backup."
+                            val message = "Successfully imported $playlistCount playlist(s) with $totalSongs song(s) from PICO Music backup."
                             onResult(Result.success(message))
                             showOperationResultNotification(
                                 notificationId = PLAYLIST_IMPORT_NOTIFICATION_ID,
@@ -10422,7 +10422,7 @@ class MusicViewModel(application: Application) : AndroidViewModel(application) {
                 // It uses M/S stereo widening, so it's always available for stereo audio
                 _isSpatializationAvailable.value = true
                 _spatializationStatus.value = when {
-                    appSettings.virtualizerEnabled.value -> "Active (Rhythm Spatial Audio)"
+                    appSettings.virtualizerEnabled.value -> "Active (PICO Spatial Audio)"
                     else -> "Available"
                 }
             } catch (e: Exception) {

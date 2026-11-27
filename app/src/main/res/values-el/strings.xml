@@ -23,12 +23,12 @@
     <string name="settings_notifications">Ειδοποιήσεις</string>
     <string name="settings_notifications_library_group">Βιβλιοθήκη και Συχρονισμός</string>
     <string name="settings_notifications_updates_group">Αναβαθμίσεις Εφαρμογής</string>
-    <string name="settings_notifications_rhythm_guard_group">Ασφάλεια Rhythm Guard</string>
+    <string name="settings_notifications_rhythm_guard_group">Ασφάλεια PICO Guard</string>
     <string name="settings_notifications_rhythm_pulse_group">Highlights &amp; Tips Ακρόασης</string>
     <string name="settings_notifications_system_group">Έλεγχος Συστήματος</string>
     <string name="settings_library_operations_notifications">Διεργασίες και Αντίγραμα Ασφαλείας Βιβλιοθήκης</string>
     <string name="settings_library_operations_notifications_desc">Εμφανίστε ειδοποιήσεις για ευρετηρίαση μέσων &amp; διαχείριση playlists</string>
-    <string name="settings_update_notifications_merged_desc">Λάβετε ειδοποιήσεις όταν οι αναβαθμίσεις του Rhythm είναι έτοιμες για εγκατάσταση</string>
+    <string name="settings_update_notifications_merged_desc">Λάβετε ειδοποιήσεις όταν οι αναβαθμίσεις του PICO Music είναι έτοιμες για εγκατάσταση</string>
     <string name="settings_rhythm_guard_alert_notifications">Προηδοποίηση Ασφάλειας Ακοής</string>
     <string name="settings_rhythm_guard_alert_notifications_desc">Ειδοποιήση όταν η ένταση ή η έκθεση ήχου υπερβαίνει τα ασφαλή όρια</string>
     <string name="settings_rhythm_guard_timer_notifications">Βοηθός Διαλείμματος Ακρόασης</string>

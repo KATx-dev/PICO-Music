@@ -248,6 +248,14 @@ fun UniversalSearchScreen(
     val isStreamingLoading by streamingViewModel.isLoading.collectAsState()
     val streamingLikedSongs by streamingViewModel.likedSongs.collectAsState()
 
+    val unifiedRepository = remember(context) {
+        com.pico.music.di.PicoMusicModule.provideUnifiedMusicRepository(context)
+    }
+    var unifiedOnlineResults by remember {
+        mutableStateOf(com.pico.music.core.unified.UnifiedSearchResult())
+    }
+    var isUnifiedOnlineLoading by remember { mutableStateOf(false) }
+
     val isGenreDetectionComplete by localViewModel.isGenreDetectionComplete.collectAsState()
     val streamingBrowseCategories by streamingViewModel.browseCategories.collectAsState()
 
@@ -278,6 +286,36 @@ fun UniversalSearchScreen(
         } else {
             streamingViewModel.clearSearch()
         }
+    }
+
+    LaunchedEffect(query, filterSongs, filterAlbums, filterArtists, filterPlaylists) {
+        if (query.isBlank()) {
+            unifiedOnlineResults = com.pico.music.core.unified.UnifiedSearchResult()
+            isUnifiedOnlineLoading = false
+            return@LaunchedEffect
+        }
+        delay(350)
+        isUnifiedOnlineLoading = true
+        val searchFilter = when {
+            filterSongs && !filterAlbums && !filterArtists && !filterPlaylists ->
+                com.pico.music.core.unified.SearchFilter.SONGS
+            filterAlbums && !filterSongs && !filterArtists && !filterPlaylists ->
+                com.pico.music.core.unified.SearchFilter.ALBUMS
+            filterArtists && !filterSongs && !filterAlbums && !filterPlaylists ->
+                com.pico.music.core.unified.SearchFilter.ARTISTS
+            filterPlaylists && !filterSongs && !filterAlbums && !filterArtists ->
+                com.pico.music.core.unified.SearchFilter.PLAYLISTS
+            else -> com.pico.music.core.unified.SearchFilter.ALL
+        }
+        unifiedOnlineResults = runCatching {
+            unifiedRepository.searchAll(
+                query = query,
+                filter = searchFilter,
+                limitPerProvider = 12,
+                enabledProviderIds = setOf("innertubex", "bitchord_extensions")
+            )
+        }.getOrDefault(com.pico.music.core.unified.UnifiedSearchResult())
+        isUnifiedOnlineLoading = false
     }
 
     val matchedLocalSongs = remember(query, localSongs, filterSongs) {
@@ -317,7 +355,23 @@ fun UniversalSearchScreen(
     val matchedStreamingArtists = if (filterArtists && isGoModeActive) streamingResults.artists else emptyList()
     val matchedStreamingPlaylists = if (filterPlaylists && isGoModeActive) streamingResults.playlists else emptyList()
 
+    val matchedUnifiedOnlineSongs = remember(unifiedOnlineResults, filterSongs) {
+        if (!filterSongs) emptyList()
+        else unifiedOnlineResults.tracks.map { track ->
+            track to Song(
+                id = track.id,
+                title = track.title,
+                artist = track.artist,
+                album = track.album.ifBlank { track.musicSource.badgeLabel },
+                duration = track.duration,
+                uri = track.playbackUri.toUri(),
+                artworkUri = track.artworkUri?.takeIf { it.isNotBlank() }?.toUri()
+            )
+        }
+    }
+
     val hasResults = matchedLocalSongs.isNotEmpty() || matchedStreamingSongs.isNotEmpty() ||
+            matchedUnifiedOnlineSongs.isNotEmpty() ||
             matchedLocalAlbums.isNotEmpty() || matchedStreamingAlbums.isNotEmpty() ||
             matchedLocalArtists.isNotEmpty() || matchedStreamingArtists.isNotEmpty() ||
             matchedLocalPlaylists.isNotEmpty() || matchedStreamingPlaylists.isNotEmpty()
@@ -726,7 +780,7 @@ fun UniversalSearchScreen(
                             ),
                             verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            if (isGoModeActive && isStreamingLoading && !hasResults) {
+                            if (((isGoModeActive && isStreamingLoading) || isUnifiedOnlineLoading) && !hasResults) {
                                 item(key = "loading_left") {
                                     Box(modifier = Modifier.fillMaxWidth().padding(vertical = 48.dp), contentAlignment = Alignment.Center) {
                                         M3CircularLoader(modifier = Modifier.size(48.dp), strokeWidth = 4f)
@@ -744,6 +798,13 @@ fun UniversalSearchScreen(
                                         add(SongSearchItem("STREAMING", song.title, "${song.artist} • ${song.album}", song.artworkUri, song) {
                                             if (query.isNotBlank()) localViewModel.addSearchQuery(query)
                                             handleAction("STREAMING") { onStreamingSongClick(song) }
+                                        })
+                                    }
+                                    val onlineQueue = matchedUnifiedOnlineSongs.map { it.second }
+                                    matchedUnifiedOnlineSongs.take(6).forEach { (track, song) ->
+                                        add(SongSearchItem("LOCAL", track.title, "${track.artist} • ${track.musicSource.badgeLabel}", song.artworkUri, song) {
+                                            if (query.isNotBlank()) localViewModel.addSearchQuery(query)
+                                            onLocalSongClick(song, onlineQueue)
                                         })
                                     }
                                 }
@@ -974,7 +1035,7 @@ fun UniversalSearchScreen(
                         ),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        if (isGoModeActive && isStreamingLoading && !hasResults) {
+                        if (((isGoModeActive && isStreamingLoading) || isUnifiedOnlineLoading) && !hasResults) {
                             item(key = "loading") {
                                 Box(modifier = Modifier.fillMaxWidth().padding(vertical = 48.dp).animateItem(), contentAlignment = Alignment.Center) {
                                     M3CircularLoader(modifier = Modifier.size(48.dp), strokeWidth = 4f)
@@ -992,6 +1053,13 @@ fun UniversalSearchScreen(
                                     add(SongSearchItem("STREAMING", song.title, "${song.artist} • ${song.album}", song.artworkUri, song) {
                                         if (query.isNotBlank()) localViewModel.addSearchQuery(query)
                                         handleAction("STREAMING") { onStreamingSongClick(song) }
+                                    })
+                                }
+                                val onlineQueue = matchedUnifiedOnlineSongs.map { it.second }
+                                matchedUnifiedOnlineSongs.take(6).forEach { (track, song) ->
+                                    add(SongSearchItem("LOCAL", track.title, "${track.artist} • ${track.musicSource.badgeLabel}", song.artworkUri, song) {
+                                        if (query.isNotBlank()) localViewModel.addSearchQuery(query)
+                                        onLocalSongClick(song, onlineQueue)
                                     })
                                 }
                             }
